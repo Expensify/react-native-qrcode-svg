@@ -4,7 +4,8 @@
   "description": "A QR Code generator for React Native based on react-native-svg and javascript-qrcode.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "2npm": "publish"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,32 @@
     "url": "https://github.com/AwesomeJerry/react-native-qrcode-svg/issues"
   },
   "homepage": "https://github.com/AwesomeJerry/react-native-qrcode-svg#readme",
+  "jest": {
+    "preset": "jest-react-native"
+  },
   "peerDependencies": {
-    "react": "^15.0.2",
-    "react-native-svg": "^1.2.6"
+    "react": "15.3.1",
+    "react-native": "0.33.0",
+    "react-native-svg": "4.3.0"
   },
   "dependencies": {
-    "javascript-qrcode": "^1.0.7",
-    "react-addons-shallow-compare": "^15.0.2"
+    "javascript-qrcode": "git+https://github.com/awesomejerry/javascript-qrcode.git",
+    "react-addons-shallow-compare": "15.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "6.9.1",
+    "babel-jest": "^15.0.0",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-preset-react-native": "^1.9.0",
+    "jest": "^15.1.1",
+    "jest-react-native": "^15.0.0",
+    "publish": "0.6.0",
+    "react": "15.0.2",
+    "react-addons-test-utils": "15.0.2",
+    "react-dom": "15.0.2",
+    "react-native": "0.33.0",
+    "react-native-svg": "^4.3.0",
+    "react-test-renderer": "^15.3.1"
   }
 }
