@@ -1,3 +1,5 @@
+// https://github.com/facebook/react/issues/7386
+jest.mock('react/lib/ReactComponentEnvironment');
 import 'react-native';
 import React from 'react';
 import QRCode from '../index';
