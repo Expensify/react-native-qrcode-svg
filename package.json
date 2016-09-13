@@ -26,13 +26,13 @@
     "preset": "jest-react-native"
   },
   "peerDependencies": {
-    "react": "15.2.1",
+    "react": "15.2.0",
     "react-native": "0.33.0",
     "react-native-svg": "4.3.0"
   },
   "dependencies": {
     "javascript-qrcode": "git+https://github.com/awesomejerry/javascript-qrcode.git",
-    "react-addons-shallow-compare": "15.2.1"
+    "react-addons-shallow-compare": "15.2.0"
   },
   "devDependencies": {
     "babel-jest": "15.0.0",
@@ -41,8 +41,8 @@
     "jest": "15.1.1",
     "jest-react-native": "15.0.0",
     "publish": "0.6.0",
-    "react": "15.2.1",
-    "react-addons-test-utils": "15.2.1",
+    "react": "15.2.0",
+    "react-addons-test-utils": "15.2.0",
     "react-native": "0.33.0",
     "react-native-svg": "4.3.0",
     "react-test-renderer": "15.3.1"
