@@ -1,6 +1,5 @@
 // core
-import React, { PropTypes, Component } from 'react';
-import shallowCompare from 'react-addons-shallow-compare';
+import React, { PropTypes, PureComponent } from 'react';
 // libs
 import { QrCode } from 'javascript-qrcode';
 import Svg, { Rect, Path } from 'react-native-svg';
@@ -8,7 +7,7 @@ import Svg, { Rect, Path } from 'react-native-svg';
 /**
  * A simple component for displaying QR Code using svg
  */
-export default class QRCode extends Component {
+export default class QRCode extends PureComponent {
   static propTypes = {
     /* what the qr code stands for */
     value: PropTypes.string,
@@ -31,9 +30,6 @@ export default class QRCode extends Component {
     this._cellSize = null;
     this._path = null;
     this.setMatrix(props);
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState);
   }
   componentWillUpdate(nextProps) {
     // if value has changed, re-setMatrix

@@ -9,42 +9,32 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/AwesomeJerry/react-native-qrcode-svg.git"
+    "url": "git+ssh://git@github.com/awesomejerry/react-native-qrcode-svg.git"
   },
   "keywords": [
     "react-native",
     "qrcode",
     "svg"
   ],
-  "author": "AwesomeJerry",
+  "author": "awesomejerry",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AwesomeJerry/react-native-qrcode-svg/issues"
+    "url": "https://github.com/awesomejerry/react-native-qrcode-svg/issues"
   },
-  "homepage": "https://github.com/AwesomeJerry/react-native-qrcode-svg#readme",
-  "jest": {
-    "preset": "jest-react-native"
-  },
+  "homepage": "https://github.com/awesomejerry/react-native-qrcode-svg#readme",
   "peerDependencies": {
-    "react": "15.3.1",
-    "react-native": "0.33.0",
-    "react-native-svg": "4.3.0"
+    "react-native-svg": "^4.3.1"
   },
   "dependencies": {
-    "javascript-qrcode": "git+https://github.com/awesomejerry/javascript-qrcode.git",
-    "react-addons-shallow-compare": "15.3.1"
+    "javascript-qrcode": "git+https://git@github.com/awesomejerry/javascript-qrcode.git"
   },
   "devDependencies": {
-    "babel-jest": "15.0.0",
-    "babel-plugin-transform-class-properties": "6.11.5",
-    "babel-preset-react-native": "1.9.0",
-    "jest": "15.1.1",
-    "jest-react-native": "15.0.0",
-    "publish": "0.6.0",
-    "react": "15.3.1",
-    "react-addons-test-utils": "15.3.1",
-    "react-native": "0.33.0",
-    "react-native-svg": "4.3.0",
-    "react-test-renderer": "15.3.1"
+    "babel-jest": "^16.0.0",
+    "babel-plugin-transform-class-properties": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "jest": "^16.0.2",
+    "react": "15.3.2",
+    "react-test-renderer": "^15.3.2"
   }
 }

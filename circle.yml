@@ -1,12 +1,12 @@
 machine:
   node:
-    version: 5.7.1
+    version: 6.9.1
 
 dependencies:
   pre:
-    - npm install react-native@0.33.0 react@15.3.1 react-native-svg@4.3.0
+    - npm install react-native-svg@^4.3.1
   override:
-    - npm install --only=dev
+    - npm install
 
 deployment:
   npm:

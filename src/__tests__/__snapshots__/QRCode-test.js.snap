@@ -1,0 +1,10 @@
+exports[`test renders correctly 1`] = `
+<div>
+  <span>
+    Rect
+  </span>
+  <span>
+    Path
+  </span>
+</div>
+`;

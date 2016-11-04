@@ -1,23 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
 export default function({ children }) {
   return (
-    <View>
+    <div>
       {children}  
-    </View>
+    </div>
   );
 }
 
 export const Rect = () => {
   return (
-    <Text>Rect</Text>
+    <span>Rect</span>
   );
 };
 
 export const Path = () => {
   return (
-    <Text>Path</Text>
+    <span>Path</span>
   );
 };
 
