@@ -1,8 +1,8 @@
 // core
 import React, { PropTypes, PureComponent } from 'react';
 // libs
-import { QrCode } from 'javascript-qrcode';
 import Svg, { Rect, Path } from 'react-native-svg';
+import genMatrix from './genMatrix';
 
 /**
  * A simple component for displaying QR Code using svg
@@ -40,8 +40,7 @@ export default class QRCode extends PureComponent {
   /* calculate the size of the cell and draw the path */
   setMatrix(props) {
     const { value, size } = props;
-    const qrcode = new QrCode(value);
-    this._matrix = qrcode.getData();
+    this._matrix = genMatrix(value);
     this._cellSize = size / (this._matrix.length + 2);
     this._path = this.transformMatrixIntoPath();
   }
