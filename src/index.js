@@ -1,5 +1,6 @@
 // core
 import React, { PropTypes, PureComponent } from 'react';
+import { View, Image } from 'react-native';
 // libs
 import Svg, { Rect, Path, G } from 'react-native-svg';
 import genMatrix from './genMatrix';
@@ -17,24 +18,19 @@ export default class QRCode extends PureComponent {
       color: PropTypes.string,
       /* the color of the background */
       backgroundColor: PropTypes.string,
-      /* a svg-string logo to imprint on the QR code,*/
-      logo: PropTypes.string,
+      /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
+      logo: PropTypes.object,
       /* logo width in pixels */
-      logoWidth: PropTypes.number,
-      /* logo height in pixels */
-      logoHeight: PropTypes.number,
-      /* should a background rectangle be painted under the logo? */
-      paintLogoBackground: PropTypes.bool
-      /* scale factor for your svg logo. Play with this to ensure your QR is scannable */
-      logoScale: PropTypes.number
+      logoSize: PropTypes.number,
+      /* the logo gets a filled rectangular background with this color. Use 'transparent'
+         if your logo already has its own backdrop. Default = same as backgroundColor */
+      logoBackgroundColor: PropTypes.string
     };
   static defaultProps = {
     value: 'This is a QR Code.',
     size: 100,
     color: 'black',
-    backgroundColor: 'white',
-    paintLogoBackground: true,
-    logoScale: 1
+    backgroundColor: 'white'
   };
   constructor(props) {
     super(props);
@@ -86,32 +82,32 @@ export default class QRCode extends PureComponent {
     return d;
   }
   renderLogo() {
-    let {logoHeight, logoWidth} = this.props;
-    const { size, backgroundColor, logo, paintLogoBackground, logoScale } = this.props;
-    const logoMargin = 1
+    if(!this.props.logo) return null;
+    const { size, logoBackgroundColor, backgroundColor, logo } = this.props;
+    const logoMargin = 5
+    const logoSize = this.props.logoSize || size * 0.2
 
-    if(!logoHeight || !logoWidth) return null;
-
-    logoHeight = logoHeight * logoScale
-    logoWidth = logoWidth * logoScale
     return (
-      <G>
-        { paintLogoBackground && (
-          <Rect
-          x={size / 2 - logoWidth / 2 - logoMargin}
-          y={size / 2 - logoHeight / 2 - logoMargin}
-          width={logoWidth + logoMargin * 2}
-          height={logoHeight + logoMargin * 2}
-          fill = {backgroundColor}
-          />
-        )}
-        <Path
-          scale={logoScale}
-          x={size / 2 - logoWidth / 2}
-          y={size / 2 - logoHeight / 2}
-          d={logo}
-        />
-      </G>
+      <View
+        style={{
+          backgroundColor: logoBackgroundColor || backgroundColor,
+          width: logoSize + logoMargin * 2,
+          height: logoSize + logoMargin * 2,
+          position: 'absolute',
+          left: size / 2 - logoSize / 2 - logoMargin,
+          top: size / 2 - logoSize / 2 - logoMargin
+        }} >
+          <Image
+            style={{
+              width: logoSize,
+              height: logoSize,
+              position: 'absolute',
+              left: logoMargin,
+              top: logoMargin
+            }}
+            source={logo}
+            resizeMode='contain' />
+      </View>
     )
   }
 
@@ -119,21 +115,23 @@ export default class QRCode extends PureComponent {
     const { size, color, backgroundColor } = this.props;
 
     return (
-      <Svg width={size} height={size}>
-        <Rect
-          x={this._cellSize}
-          y={this._cellSize}
-          width={size - 2 * this._cellSize}
-          height={size - 2 * this._cellSize}
-          fill={backgroundColor}
-        />
-        <Path
-          d={this._path}
-          stroke={color}
-          strokeWidth={this._cellSize}
-        />
+      <View>
+        <Svg width={size} height={size}>
+          <Rect
+            x={this._cellSize}
+            y={this._cellSize}
+            width={size - 2 * this._cellSize}
+            height={size - 2 * this._cellSize}
+            fill={backgroundColor}
+          />
+          <Path
+            d={this._path}
+            stroke={color}
+            strokeWidth={this._cellSize}
+          />
+        </Svg>
         { this.renderLogo() }
-      </Svg>
+      </View>
     );
   }
 }
