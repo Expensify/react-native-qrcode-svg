@@ -84,7 +84,7 @@ export default class QRCode extends PureComponent {
   renderLogo() {
     if(!this.props.logo) return null;
     const { size, logoBackgroundColor, backgroundColor, logo } = this.props;
-    const logoMargin = 5
+    const logoMargin = 2
     const logoSize = this.props.logoSize || size * 0.2
 
     return (
