@@ -2,35 +2,38 @@
 import React, { PropTypes, PureComponent } from 'react';
 import { View, Image } from 'react-native';
 // libs
-import Svg, { Rect, Path, G } from 'react-native-svg';
+import Svg, { Rect, Path } from 'react-native-svg';
 import genMatrix from './genMatrix';
 
 /**
  * A simple component for displaying QR Code using svg
  */
 export default class QRCode extends PureComponent {
-    static propTypes = {
-      /* what the qr code stands for */
-      value: PropTypes.string,
-      /* the whole component size */
-      size: PropTypes.number,
-      /* the color of the cell */
-      color: PropTypes.string,
-      /* the color of the background */
-      backgroundColor: PropTypes.string,
-      /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
-      logo: PropTypes.object,
-      /* logo width in pixels */
-      logoSize: PropTypes.number,
-      /* the logo gets a filled rectangular background with this color. Use 'transparent'
+  static propTypes = {
+    /* what the qr code stands for */
+    value: PropTypes.string,
+    /* the whole component size */
+    size: PropTypes.number,
+    /* the color of the cell */
+    color: PropTypes.string,
+    /* the color of the background */
+    backgroundColor: PropTypes.string,
+    /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
+    logo: Image.propTypes.source,
+    /* logo width in pixels */
+    logoSize: PropTypes.number,
+    /* the logo gets a filled rectangular background with this color. Use 'transparent'
          if your logo already has its own backdrop. Default = same as backgroundColor */
-      logoBackgroundColor: PropTypes.string
-    };
+    logoBackgroundColor: PropTypes.string,
+    /* logo's distance to its wrapper */
+    logoMargin: PropTypes.number,
+  };
   static defaultProps = {
     value: 'This is a QR Code.',
     size: 100,
     color: 'black',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    logoMargin: 2,
   };
   constructor(props) {
     super(props);
@@ -82,37 +85,45 @@ export default class QRCode extends PureComponent {
     return d;
   }
   renderLogo() {
-    if(!this.props.logo) return null;
-    const { size, logoBackgroundColor, backgroundColor, logo } = this.props;
-    const logoMargin = 2
-    const logoSize = this.props.logoSize || size * 0.2
+    const {
+      size,
+      backgroundColor,
+      logo,
+      logoBackgroundColor = backgroundColor,
+      logoSize = size * 0.2,
+      logoMargin,
+    } = this.props;
+    const wrapSize = logoSize + logoMargin * 2;
+    const position = size / 2 - logoSize / 2 - logoMargin;
 
     return (
       <View
         style={{
-          backgroundColor: logoBackgroundColor || backgroundColor,
-          width: logoSize + logoMargin * 2,
-          height: logoSize + logoMargin * 2,
+          backgroundColor: logoBackgroundColor, 
+          width: wrapSize,
+          height: wrapSize,
           position: 'absolute',
-          left: size / 2 - logoSize / 2 - logoMargin,
-          top: size / 2 - logoSize / 2 - logoMargin
-        }} >
-          <Image
-            style={{
-              width: logoSize,
-              height: logoSize,
-              position: 'absolute',
-              left: logoMargin,
-              top: logoMargin
-            }}
-            source={logo}
-            resizeMode='contain' />
+          left: position,
+          top: position,
+        }}
+      >
+        <Image
+          style={{
+            width: logoSize,
+            height: logoSize,
+            position: 'absolute',
+            left: logoMargin,
+            top: logoMargin
+          }}
+          source={logo}
+          resizeMode='contain'
+        />
       </View>
     )
   }
 
   render() {
-    const { size, color, backgroundColor } = this.props;
+    const { size, color, backgroundColor, logo } = this.props;
 
     return (
       <View>
@@ -130,7 +141,7 @@ export default class QRCode extends PureComponent {
             strokeWidth={this._cellSize}
           />
         </Svg>
-        { this.renderLogo() }
+        {logo && this.renderLogo()}
       </View>
     );
   }
