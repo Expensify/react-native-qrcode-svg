@@ -3,8 +3,6 @@ machine:
     version: 6.9.1
 
 dependencies:
-  pre:
-    - npm install react-native-svg@^4.3.1
   override:
     - npm install
 

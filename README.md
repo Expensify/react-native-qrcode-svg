@@ -10,9 +10,9 @@ A QR Code generator for React Native based on react-native-svg and javascript-qr
 * Easily render QR code images
 * Optionally embed a logotype
 
-<img src="./screenshot/android.png" width="150">
-<img src="./screenshot/ios.png" width="150">
-<img src="./screenshot/logo.png" width="150">
+<img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/android.png" width="150">
+<img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/ios.png" width="150">
+<img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/logo.png" width="150">
 
 ## Installation
 
