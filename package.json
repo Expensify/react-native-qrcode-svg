@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test-update": "npm run test -- --updateSnapshot",
+    "lint": "standard 'src/**/*.js'",
     "2npm": "publish"
   },
   "repository": {
@@ -23,6 +24,12 @@
     "url": "https://github.com/awesomejerry/react-native-qrcode-svg/issues"
   },
   "homepage": "https://github.com/awesomejerry/react-native-qrcode-svg#readme",
+  "standard": {
+    "env": [
+      "jest"
+    ],
+    "parser": "babel-eslint"
+  },
   "peerDependencies": {
     "react": "^15.4.2",
     "react-native": "^0.42.0",
@@ -32,11 +39,13 @@
     "javascript-qrcode": "git+https://git@github.com/awesomejerry/javascript-qrcode.git"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.2",
     "babel-jest": "^19.0.0",
     "babel-preset-react-native": "^1.9.1",
     "jest": "^19.0.2",
     "publish": "^0.6.0",
     "react": "^15.4.2",
-    "react-test-renderer": "^15.4.2"
+    "react-test-renderer": "^15.4.2",
+    "standard": "^10.0.2"
   }
 }

@@ -1,6 +1,6 @@
-import { QrCode } from 'javascript-qrcode';
+import { QrCode } from 'javascript-qrcode'
 
 export default (value) => {
-  const qrcode = new QrCode(value);
-  return qrcode.getData();
-};
+  const qrcode = new QrCode(value)
+  return qrcode.getData()
+}
