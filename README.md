@@ -69,6 +69,24 @@ render() {
 
 ```
 
+```
+// get base64 string encode of the qrcode (currently logo is not included)
+getDataURL() {
+  this.svg.toDataURL(this.callback);
+}
+callback(dataURL) {
+  console.log(dataURL);
+}
+render() {
+  return (
+    <QRCode
+      value="Just some string value"
+      getRef={(c) => (this.svg = c)}
+    />
+  );
+}
+```
+
 
 ### Props
 
@@ -80,6 +98,7 @@ color           | 'black'        | Color of the QR code
 logo | null        | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}
 logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error correction in QR code
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
+getRef          | null       | Get SVG ref for further usage
 
 
 ### Dependencies

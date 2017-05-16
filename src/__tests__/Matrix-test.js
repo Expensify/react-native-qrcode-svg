@@ -1,4 +1,4 @@
-import genMatrix from '../genMatrix';
+import genMatrix from '../genMatrix'
 
 const expected = [
   [ 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1 ],
@@ -22,9 +22,9 @@ const expected = [
   [ 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1 ],
   [ 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0 ],
   [ 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1 ]
-];
+]
 
 it('generates correctly', () => {
-  const matrix = genMatrix('test');
-  expect(matrix).toEqual(expected);
-});
+  const matrix = genMatrix('test')
+  expect(matrix).toEqual(expected)
+})
