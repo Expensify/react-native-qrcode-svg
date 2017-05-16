@@ -26,7 +26,9 @@ export default class QRCode extends PureComponent {
          if your logo already has its own backdrop. Default = same as backgroundColor */
     logoBackgroundColor: PropTypes.string,
     /* logo's distance to its wrapper */
-    logoMargin: PropTypes.number
+    logoMargin: PropTypes.number,
+    /* get svg ref for further usage */
+    getRef: PropTypes.func
   };
   static defaultProps = {
     value: 'This is a QR Code.',
@@ -123,11 +125,11 @@ export default class QRCode extends PureComponent {
   }
 
   render () {
-    const { size, color, backgroundColor, logo } = this.props
+    const { size, color, backgroundColor, logo, getRef } = this.props
 
     return (
       <View>
-        <Svg width={size} height={size}>
+        <Svg ref={getRef} width={size} height={size}>
           <Rect
             x={this._cellSize}
             y={this._cellSize}
