@@ -99,6 +99,7 @@ logo | null        | Image source object. Ex. {uri: 'base64string'} or {require(
 logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error correction in QR code
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
 getRef          | null       | Get SVG ref for further usage
+ecl             | 'M'        | Error correction level
 
 
 ### Dependencies
