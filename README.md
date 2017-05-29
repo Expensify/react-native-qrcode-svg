@@ -102,8 +102,10 @@ getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
 
 
-### Dependencies
+### PeerDependencies
 
 * [react-native-svg](https://github.com/magicismight/react-native-svg)
 
-* [javascript-qrcode](https://github.com/siciarek/javascript-qrcode)
+### Dependencies
+
+* [node-qrcode](https://github.com/soldair/node-qrcode)
