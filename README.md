@@ -101,6 +101,32 @@ logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic 
 getRef          | null       | Get SVG ref for further usage
 
 
+## Saving generated code to gallery
+ _Note: Experimental only ( not tested on iOS) , uses getRef() and needs [RNFS module](https://github.com/itinance/react-native-fs)_
+
+npm install --save react-native-fs
+
+### Example for Android:
+```
+import { CameraRoll , ToastAndroid } from "react-native"
+import RNFS from "react-native-fs"
+ .....
+
+saveQrToDisk() {
+   	this.svg.toDataURL((data) => {
+   		RNFS.writeFile(RNFS.CachesDirectoryPath+"/some-name.png", data, 'base64')
+   		  .then((success) => {
+   			  return CameraRoll.saveToCameraRoll(RNFS.CachesDirectoryPath+"/some-name", 'photo')
+   		  })
+   		  .then(() => {
+   			  this.setState({ busy: false, imageSaved: true  })
+   			  ToastAndroid.show('Saved to gallery !!', ToastAndroid.SHORT)
+   		  })
+   	})
+   }
+```
+
+
 ### Dependencies
 
 * [react-native-svg](https://github.com/magicismight/react-native-svg)
