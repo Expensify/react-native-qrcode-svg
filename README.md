@@ -111,9 +111,9 @@ npm install --save react-native-fs
 ```
 import { CameraRoll , ToastAndroid } from "react-native"
 import RNFS from "react-native-fs"
- .....
+...
 
-saveQrToDisk() {
+  saveQrToDisk() {
    	this.svg.toDataURL((data) => {
    		RNFS.writeFile(RNFS.CachesDirectoryPath+"/some-name.png", data, 'base64')
    		  .then((success) => {
@@ -124,7 +124,7 @@ saveQrToDisk() {
    			  ToastAndroid.show('Saved to gallery !!', ToastAndroid.SHORT)
    		  })
    	})
-   }
+  }
 ```
 
 
