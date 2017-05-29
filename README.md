@@ -23,7 +23,7 @@ react-native link react-native-svg
 npm install react-native-qrcode-svg --save
 ```
 
-### Examples
+## Examples
 
 ```
 import QRCode from 'react-native-qrcode-svg';
@@ -88,7 +88,7 @@ render() {
 ```
 
 
-### Props
+## Props
 
 Name            | Default    | Description
 ----------------|------------|--------------
@@ -101,6 +101,34 @@ logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic 
 getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
 
+
+## Saving generated code to gallery
+ _Note: Experimental only ( not tested on iOS) , uses getRef() and needs [RNFS module](https://github.com/itinance/react-native-fs)_
+
+npm install --save react-native-fs
+
+### Example for Android:
+```
+import { CameraRoll , ToastAndroid } from "react-native"
+import RNFS from "react-native-fs"
+ .....
+
+saveQrToDisk() {
+   	this.svg.toDataURL((data) => {
+   		RNFS.writeFile(RNFS.CachesDirectoryPath+"/some-name.png", data, 'base64')
+   		  .then((success) => {
+   			  return CameraRoll.saveToCameraRoll(RNFS.CachesDirectoryPath+"/some-name", 'photo')
+   		  })
+   		  .then(() => {
+   			  this.setState({ busy: false, imageSaved: true  })
+   			  ToastAndroid.show('Saved to gallery !!', ToastAndroid.SHORT)
+   		  })
+   	})
+   }
+```
+
+
+## Dependencies
 
 ### PeerDependencies
 
