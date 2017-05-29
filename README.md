@@ -23,7 +23,7 @@ react-native link react-native-svg
 npm install react-native-qrcode-svg --save
 ```
 
-### Examples
+## Examples
 
 ```
 import QRCode from 'react-native-qrcode-svg';
@@ -88,7 +88,7 @@ render() {
 ```
 
 
-### Props
+## Props
 
 Name            | Default    | Description
 ----------------|------------|--------------
@@ -99,6 +99,7 @@ logo | null        | Image source object. Ex. {uri: 'base64string'} or {require(
 logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error correction in QR code
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
 getRef          | null       | Get SVG ref for further usage
+ecl             | 'M'        | Error correction level
 
 
 ## Saving generated code to gallery
@@ -127,8 +128,12 @@ saveQrToDisk() {
 ```
 
 
-### Dependencies
+## Dependencies
+
+### PeerDependencies
 
 * [react-native-svg](https://github.com/magicismight/react-native-svg)
 
-* [javascript-qrcode](https://github.com/siciarek/javascript-qrcode)
+### Dependencies
+
+* [node-qrcode](https://github.com/soldair/node-qrcode)
