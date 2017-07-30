@@ -41,6 +41,7 @@
     "react-native-svg": "^5.1.5"
   },
   "dependencies": {
+    "prop-types": "^15.5.10",
     "qrcode": "^0.8.1"
   },
   "devDependencies": {
