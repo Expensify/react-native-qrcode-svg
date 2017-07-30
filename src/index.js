@@ -1,6 +1,7 @@
 // core
-import React, { PropTypes, PureComponent } from 'react'
+import React, { PureComponent } from 'react'
 import { View, Image } from 'react-native'
+import PropTypes from 'prop-types'
 // libs
 import Svg, { Rect, Path } from 'react-native-svg'
 import genMatrix from './genMatrix'
