@@ -28,6 +28,8 @@ export default class QRCode extends PureComponent {
     logoBackgroundColor: PropTypes.string,
     /* logo's distance to its wrapper */
     logoMargin: PropTypes.number,
+    /* the border-radius of logo image */
+    logoBorderRadius: PropTypes.number,
     /* get svg ref for further usage */
     getRef: PropTypes.func,
     /* error correction level */
@@ -91,36 +93,32 @@ export default class QRCode extends PureComponent {
     return d
   }
   renderLogo () {
-    const {
-      size,
-      backgroundColor,
-      logo,
-      logoBackgroundColor = backgroundColor,
-      logoSize = size * 0.2,
-      logoMargin
-    } = this.props
+    const { size, backgroundColor, logo, logoBackgroundColor = backgroundColor,
+      logoSize = size * 0.2, logoMargin, logoBorderRadius } = this.props
     const wrapSize = logoSize + logoMargin * 2
     const position = size / 2 - logoSize / 2 - logoMargin
 
+    const viewStyle = {
+      backgroundColor: logoBackgroundColor,
+      width: wrapSize,
+      height: wrapSize,
+      position: 'absolute',
+      left: position,
+      top: position,
+      padding: logoMargin,
+      borderRadius: logoBorderRadius,
+      overflow: 'hidden'
+    }
+
+    const imageStyle = {
+      width: logoSize,
+      height: logoSize
+    }
+
     return (
-      <View
-        style={{
-          backgroundColor: logoBackgroundColor,
-          width: wrapSize,
-          height: wrapSize,
-          position: 'absolute',
-          left: position,
-          top: position
-        }}
-      >
+      <View style={viewStyle}>
         <Image
-          style={{
-            width: logoSize,
-            height: logoSize,
-            position: 'absolute',
-            left: logoMargin,
-            top: logoMargin
-          }}
+          style={imageStyle}
           source={logo}
           resizeMode='contain'
         />
