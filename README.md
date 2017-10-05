@@ -98,6 +98,8 @@ color           | 'black'        | Color of the QR code
 logo | null        | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}
 logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error correction in QR code
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
+logoMargin | 2 | logo's distance to its wrapper
+logoBorderRadius | null | the border-radius of logo image (Android is not supported)
 getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
 
@@ -117,7 +119,7 @@ import RNFS from "react-native-fs"
    	this.svg.toDataURL((data) => {
    		RNFS.writeFile(RNFS.CachesDirectoryPath+"/some-name.png", data, 'base64')
    		  .then((success) => {
-   			  return CameraRoll.saveToCameraRoll(RNFS.CachesDirectoryPath+"/some-name", 'photo')
+   			  return CameraRoll.saveToCameraRoll(RNFS.CachesDirectoryPath+"/some-name.png", 'photo')
    		  })
    		  .then(() => {
    			  this.setState({ busy: false, imageSaved: true  })
