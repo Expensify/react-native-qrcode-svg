@@ -119,7 +119,7 @@ import RNFS from "react-native-fs"
    	this.svg.toDataURL((data) => {
    		RNFS.writeFile(RNFS.CachesDirectoryPath+"/some-name.png", data, 'base64')
    		  .then((success) => {
-   			  return CameraRoll.saveToCameraRoll(RNFS.CachesDirectoryPath+"/some-name", 'photo')
+   			  return CameraRoll.saveToCameraRoll(RNFS.CachesDirectoryPath+"/some-name.png", 'photo')
    		  })
    		  .then(() => {
    			  this.setState({ busy: false, imageSaved: true  })
