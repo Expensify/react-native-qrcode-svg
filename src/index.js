@@ -60,7 +60,7 @@ export default class QRCode extends PureComponent {
   setMatrix (props) {
     const { value, size, ecl } = props
     this._matrix = genMatrix(value, ecl)
-    this._cellSize = size / (this._matrix.length + 2)
+    this._cellSize = size / this._matrix.length
     this._path = this.transformMatrixIntoPath()
   }
   /* project the matrix into path draw */
@@ -68,23 +68,21 @@ export default class QRCode extends PureComponent {
     const matrix = this._matrix
     const cellSize = this._cellSize
     // adjust origin
-    const oY = cellSize * 1.5
-    const oX = cellSize
     let d = ''
     matrix.forEach((row, i) => {
       let needDraw = false
       row.forEach((column, j) => {
         if (column) {
           if (!needDraw) {
-            d += `M${oX + cellSize * j} ${oY + cellSize * i} `
+            d += `M${cellSize * j} ${cellSize / 2 + cellSize * i} `
             needDraw = true
           }
           if (needDraw && j === matrix.length - 1) {
-            d += `L${oX + cellSize * (j + 1)} ${oY + cellSize * i} `
+            d += `L${cellSize * (j + 1)} ${cellSize / 2 + cellSize * i} `
           }
         } else {
           if (needDraw) {
-            d += `L${oX + cellSize * j} ${oY + cellSize * i} `
+            d += `L${cellSize * j} ${cellSize / 2 + cellSize * i} `
             needDraw = false
           }
         }
@@ -133,10 +131,8 @@ export default class QRCode extends PureComponent {
       <View>
         <Svg ref={getRef} width={size} height={size}>
           <Rect
-            x={this._cellSize}
-            y={this._cellSize}
-            width={size - 2 * this._cellSize}
-            height={size - 2 * this._cellSize}
+            width={size}
+            height={size}
             fill={backgroundColor}
           />
           <Path
