@@ -52,7 +52,7 @@ export default class QRCode extends PureComponent {
   }
   componentWillUpdate (nextProps) {
     // if value has changed, re-setMatrix
-    if (nextProps.value !== this.props.value) {
+    if (nextProps.value !== this.props.value || nextProps.size !== this.props.size) {
       this.setMatrix(nextProps)
     }
   }
