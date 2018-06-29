@@ -5,6 +5,8 @@
 
 A QR Code generator for React Native based on react-native-svg and javascript-qrcode.
 
+Discussion: https://discord.gg/RvFM97v
+
 ## Features
 
 * Easily render QR code images
