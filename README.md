@@ -14,7 +14,6 @@ Discussion: https://discord.gg/RvFM97v
 
 <img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/android.png" width="150">
 <img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/ios.png" width="150">
-<img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/logo.png" width="150">
 
 ## Installation
 
@@ -97,11 +96,12 @@ Name            | Default    | Description
 size            | 100        | Size of rendered image in pixels
 value           | 'this is a QR code' | Value of the QR code
 color           | 'black'        | Color of the QR code
+backgroundColor | 'white'        | Color of the background
 logo | null        | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}
 logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error correction in QR code
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
 logoMargin | 2 | logo's distance to its wrapper
-logoBorderRadius | null | the border-radius of logo image (Android is not supported)
+logoBorderRadius | 0 | the border-radius of logo image (Android is not supported)
 getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
 

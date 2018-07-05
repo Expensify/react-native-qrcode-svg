@@ -4,6 +4,7 @@
   "description": "A QR Code generator for React Native based on react-native-svg and javascript-qrcode.",
   "main": "index.js",
   "scripts": {
+    "prepare": "rm -rf example",
     "test": "jest",
     "test-update": "npm run test -- --updateSnapshot",
     "lint-staged": "lint-staged",
