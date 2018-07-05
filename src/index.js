@@ -1,10 +1,11 @@
-// core
 import React, { PureComponent } from 'react'
-import { View, Image } from 'react-native'
+import { Image as RNImage } from 'react-native'
 import PropTypes from 'prop-types'
-// libs
-import Svg, { Rect, Path } from 'react-native-svg'
+import Svg, { Defs, G, Rect, Path, Image, ClipPath } from 'react-native-svg'
 import genMatrix from './genMatrix'
+
+const DEFAULT_SIZE = 100
+const DEFAULT_BG_COLOR = 'white'
 
 /**
  * A simple component for displaying QR Code using svg
@@ -20,8 +21,8 @@ export default class QRCode extends PureComponent {
     /* the color of the background */
     backgroundColor: PropTypes.string,
     /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
-    logo: Image.propTypes.source,
-    /* logo width in pixels */
+    logo: RNImage.propTypes.source,
+    /* logo size in pixels */
     logoSize: PropTypes.number,
     /* the logo gets a filled rectangular background with this color. Use 'transparent'
          if your logo already has its own backdrop. Default = same as backgroundColor */
@@ -37,10 +38,13 @@ export default class QRCode extends PureComponent {
   };
   static defaultProps = {
     value: 'This is a QR Code.',
-    size: 100,
+    size: DEFAULT_SIZE,
     color: 'black',
-    backgroundColor: 'white',
+    backgroundColor: DEFAULT_BG_COLOR,
+    logoSize: DEFAULT_SIZE * 0.2,
+    logoBackgroundColor: DEFAULT_BG_COLOR,
     logoMargin: 2,
+    logoBorderRadius: 0,
     ecl: 'M'
   };
   constructor (props) {
@@ -90,59 +94,66 @@ export default class QRCode extends PureComponent {
     })
     return d
   }
-  renderLogo () {
-    const { size, backgroundColor, logo, logoBackgroundColor = backgroundColor,
-      logoSize = size * 0.2, logoMargin, logoBorderRadius } = this.props
-    const wrapSize = logoSize + logoMargin * 2
-    const position = size / 2 - logoSize / 2 - logoMargin
-
-    const viewStyle = {
-      backgroundColor: logoBackgroundColor,
-      width: wrapSize,
-      height: wrapSize,
-      position: 'absolute',
-      left: position,
-      top: position,
-      padding: logoMargin,
-      borderRadius: logoBorderRadius,
-      overflow: 'hidden'
-    }
-
-    const imageStyle = {
-      width: logoSize,
-      height: logoSize
-    }
-
-    return (
-      <View style={viewStyle}>
-        <Image
-          style={imageStyle}
-          source={logo}
-          resizeMode='contain'
-        />
-      </View>
-    )
-  }
-
   render () {
-    const { size, color, backgroundColor, logo, getRef } = this.props
+    const {
+      getRef, size, color, backgroundColor,
+      logo, logoSize, logoMargin, logoBackgroundColor, logoBorderRadius
+    } = this.props
+
+    const logoPosition = size / 2 - logoSize / 2 - logoMargin
+    const logoWrapperSize = logoSize + logoMargin * 2
+    const logoWrapperBorderRadius = logoBorderRadius + (logoBorderRadius && logoMargin)
 
     return (
-      <View>
-        <Svg ref={getRef} width={size} height={size}>
-          <Rect
-            width={size}
-            height={size}
-            fill={backgroundColor}
-          />
-          <Path
-            d={this._path}
-            stroke={color}
-            strokeWidth={this._cellSize}
-          />
-        </Svg>
-        {logo && this.renderLogo()}
-      </View>
+      <Svg ref={getRef} width={size} height={size}>
+        <Defs>
+          <ClipPath id='clip-wrapper'>
+            <Rect
+              width={logoWrapperSize}
+              height={logoWrapperSize}
+              rx={logoWrapperBorderRadius}
+              ry={logoWrapperBorderRadius}
+            />
+          </ClipPath>
+          <ClipPath id='clip-logo'>
+            <Rect
+              width={logoSize}
+              height={logoSize}
+              rx={logoBorderRadius}
+              ry={logoBorderRadius}
+            />
+          </ClipPath>
+        </Defs>
+        <Rect
+          width={size}
+          height={size}
+          fill={backgroundColor}
+        />
+        <Path
+          d={this._path}
+          stroke={color}
+          strokeWidth={this._cellSize}
+        />
+        {logo && (
+          <G x={logoPosition} y={logoPosition}>
+            <Rect
+              width={logoWrapperSize}
+              height={logoWrapperSize}
+              fill={logoBackgroundColor}
+              clipPath='url(#clip-wrapper)'
+            />
+            <G x={logoMargin} y={logoMargin}>
+              <Image
+                width={logoSize}
+                height={logoSize}
+                preserveAspectRatio='xMidYMid slice'
+                href={logo}
+                clipPath='url(#clip-logo)'
+              />
+            </G>
+          </G>
+        )}
+      </Svg>
     )
   }
 }
