@@ -2,8 +2,6 @@ import * as React from 'react'
 import { Image, ImageSourcePropType } from 'react-native'
 
 declare class QRCode extends React.PureComponent<QRCodeProps, any> {
-  public transformMatrixIntoPath: () => string
-  public setMatrix: (props: QRCodeProps) => void
 }
 
 export interface QRCodeProps {
