@@ -28,6 +28,8 @@ export interface QRCodeProps {
   getRef?: () => any
   /* error correction level */
   ecl?: 'L' | 'M' | 'Q' | 'H'
+  /* style of the qr */
+  style?: ViewStyle
 }
 
 export default QRCode
