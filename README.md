@@ -104,6 +104,7 @@ logoMargin | 2 | logo's distance to its wrapper
 logoBorderRadius | 0 | the border-radius of logo image (Android is not supported)
 getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
+onError(error)  | undefined  | Callback fired when exception happened during the code generating process
 
 
 ## Saving generated code to gallery
