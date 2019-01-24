@@ -39,7 +39,7 @@ export default class QRCode extends PureComponent {
      * appeared during the process of code generating.
      * Error object is passed to the callback.
      */
-    onError: PropTypes.func,
+    onError: PropTypes.func
   };
   static defaultProps = {
     value: 'This is a QR Code.',
@@ -74,11 +74,11 @@ export default class QRCode extends PureComponent {
       this._cellSize = size / this._matrix.length
       this._path = this.transformMatrixIntoPath()
     } catch (error) {
-      if (this.props.onError && typeof this.props.onError === 'function') {
-        this.props.onError(error);
+      if (onError && typeof onError === 'function') {
+        onError(error)
       } else {
         // Pass the error when no handler presented
-        throw error;
+        throw error
       }
     }
   }

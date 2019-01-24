@@ -22,24 +22,26 @@ describe('QRCode', () => {
   // Let's simulate too big data passed to QRCode and check if onError Callback
   // Called properly
   it('calls onError in case of issue with code generating', () => {
-    const onErrorMock = jest.fn();
-    const tree = renderer.create(
+    const onErrorMock = jest.fn()
+    // Let's try to render with too big amount of data that should
+    // throw an exception
+    renderer.create(
       <QRCode
         value={(new Array(1000000)).join('123')}
         onError={onErrorMock}
       />
-    );
+    )
     expect(onErrorMock.mock.calls.length).toBe(1)
   })
 
   it('does not call onError in case if value is fine', () => {
-    const onErrorMock = jest.fn();
-    const tree = renderer.create(
+    const onErrorMock = jest.fn()
+    renderer.create(
       <QRCode
-        value="123"
+        value='123'
         onError={onErrorMock}
       />
-    );
+    )
     expect(onErrorMock.mock.calls.length).toBe(0)
   })
 })
