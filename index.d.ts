@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Image, ImageSourcePropType } from 'react-native'
+import { ImageURISource } from 'react-native'
 
 declare class QRCode extends React.PureComponent<QRCodeProps, any> {
 }
@@ -14,7 +14,7 @@ export interface QRCodeProps {
   /* the color of the background */
   backgroundColor?: string
   /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
-  logo?: ImageSourcePropType
+  logo?: ImageURISource
   /* logo size in pixels */
   logoSize?: number
   /* the logo gets a filled rectangular background with this color. Use 'transparent'
