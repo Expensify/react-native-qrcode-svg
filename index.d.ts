@@ -25,7 +25,7 @@ export interface QRCodeProps {
   /* the border-radius of logo image */
   logoBorderRadius?: number
   /* get svg ref for further usage */
-  getRef?: () => any
+  getRef?: (c: any) => any
   /* error correction level */
   ecl?: 'L' | 'M' | 'Q' | 'H'
 }
