@@ -142,3 +142,10 @@ import RNFS from "react-native-fs"
 ### Dependencies
 
 * [node-qrcode](https://github.com/soldair/node-qrcode)
+
+---
+
+If you like this project, please consider buy me a coffee :)
+
+https://www.buymeacoffee.com/LquC7mid5
+
