@@ -47,7 +47,7 @@ render() {
   return (
     <QRCode
       value="Just some string value"
-      logo={{uri: base64Logo}
+      logo={{uri: base64Logo}}
       logoSize={30}
       logoBackgroundColor='transparent'
     />
