@@ -13,6 +13,9 @@ module.exports = {
     return blacklist([
       new RegExp(
         `^${escape(path.resolve(__dirname, '..', 'node_modules'))}\\/.*$`
+      ),
+      new RegExp(
+        `^${escape(path.resolve(__dirname, '..', 'expo-example'))}\\/.*$`
       )
     ])
   }
