@@ -47,7 +47,7 @@ render() {
   return (
     <QRCode
       value="Just some string value"
-      logo={{uri: base64Logo}
+      logo={{uri: base64Logo}}
       logoSize={30}
       logoBackgroundColor='transparent'
     />
@@ -142,3 +142,10 @@ import RNFS from "react-native-fs"
 ### Dependencies
 
 * [node-qrcode](https://github.com/soldair/node-qrcode)
+
+---
+
+If you like this project, please consider buy me a coffee :)
+
+https://www.buymeacoffee.com/LquC7mid5
+
