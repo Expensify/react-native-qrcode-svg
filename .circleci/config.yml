@@ -40,7 +40,7 @@ jobs:
       # This is based on your 1.0 configuration file or project settings
       - run:
           working_directory: ~/awesomejerry/react-native-qrcode-svg
-          command: nvm install 6.9.1 && nvm alias default 6.9.1
+          command: nvm install 8.11.1 && nvm alias default 8.11.1
       # Dependencies
       #   This would typically go in either a build or a build-and-test job when using workflows
       # Restore the dependency cache
