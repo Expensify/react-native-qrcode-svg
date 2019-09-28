@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Image as RNImage} from 'react-native';
 import PropTypes from 'prop-types';
-import Svg, {Defs, G, Rect, Path, Image, ClipPath} from 'react-native-svg';
+import Svg, {Defs, G, Rect, Path, Image, ClipPath, LinearGradient, Stop} from 'react-native-svg';
 import genMatrix from './genMatrix';
 
 const DEFAULT_SIZE = 100;
@@ -101,7 +101,10 @@ export default class QRCode extends PureComponent {
     logoMargin: 2,
     logoBorderRadius: 0,
     ecl: 'M',
-    onError: undefined
+    onError: undefined,
+    gradientDirection:[170,0,0,0],
+    linearGradient:['rgb(255,0,0)','rgb(0,255,255)'],
+    enableLinearGradient:false,
   };
 
   constructor(props) {
@@ -127,14 +130,14 @@ export default class QRCode extends PureComponent {
       logoSize,
       logoMargin,
       logoBackgroundColor,
-      logoBorderRadius
+      logoBorderRadius,
+      enableLinearGradient,
     } = this.props;
 
     const logoPosition = size / 2 - logoSize / 2 - logoMargin;
     const logoWrapperSize = logoSize + logoMargin * 2;
     const logoWrapperBorderRadius =
       logoBorderRadius + (logoBorderRadius && logoMargin);
-
     const {cellSize, path} = this.state;
 
     return (
@@ -156,11 +159,16 @@ export default class QRCode extends PureComponent {
               ry={logoBorderRadius}
             />
           </ClipPath>
+          <LinearGradient id="grad" x1={this.props.gradientDirection[0]} y1={this.props.gradientDirection[1]} x2={this.props.gradientDirection[2]} y2={this.props.gradientDirection[3]}>
+            <Stop offset="0" stopColor={this.props.linearGradient[0]} stopOpacity="1" />
+            <Stop offset="1" stopColor={this.props.linearGradient[1]} stopOpacity="1" />
+          </LinearGradient>
+
         </Defs>
         <Rect width={size} height={size} fill={backgroundColor} />
-        {path && cellSize && (
-          <Path d={path} stroke={color} strokeWidth={cellSize} />
-        )}
+          {path && cellSize && (
+              <Path d={path} stroke={enableLinearGradient ? "url(#grad)" : color} strokeWidth={cellSize} />
+          )}
         {logo && (
           <G x={logoPosition} y={logoPosition}>
             <Rect
