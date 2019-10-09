@@ -127,14 +127,16 @@ export default class QRCode extends PureComponent {
       color,
       backgroundColor,
       logo,
-      quietZone,
       logoBackgroundColor
     } = this.props
 
     const qrScale = QR_SIZE / size
+
+    // scale sizes that relate to qr to match with the size of the whole image
     const logoSize = this.props.logoSize * qrScale
     const logoMargin = this.props.logoMargin * qrScale
     const logoBorderRadius = this.props.logoBorderRadius * qrScale
+    const quietZone = this.props.quietZone * qrScale
 
     const logoPosition = QR_SIZE / 2 - logoSize / 2 - logoMargin
     const logoWrapperSize = logoSize + logoMargin * 2
@@ -149,10 +151,10 @@ export default class QRCode extends PureComponent {
         <Svg
           id='qr-container'
           viewBox={[
-            -quietZone / 2,
-            -quietZone / 2,
-            QR_SIZE + quietZone,
-            QR_SIZE + quietZone
+            -quietZone,
+            -quietZone,
+            QR_SIZE + quietZone * 2,
+            QR_SIZE + quietZone * 2
           ].join(' ')}
           width={size}
           height={size}
