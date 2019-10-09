@@ -1,59 +1,59 @@
-import React, { PureComponent } from 'react';
-import { Image as RNImage } from 'react-native';
-import PropTypes from 'prop-types';
-import Svg, { Defs, G, Rect, Path, Image, ClipPath } from 'react-native-svg';
-import genMatrix from './genMatrix';
+import React, { PureComponent } from 'react'
+import { Image as RNImage } from 'react-native'
+import PropTypes from 'prop-types'
+import Svg, { Defs, G, Rect, Path, Image, ClipPath } from 'react-native-svg'
+import genMatrix from './genMatrix'
 
-const QR_SIZE = 100;
-const DEFAULT_SIZE = 100;
-const DEFAULT_BG_COLOR = 'white';
+const QR_SIZE = 100
+const DEFAULT_SIZE = 100
+const DEFAULT_BG_COLOR = 'white'
 
 /* calculate the size of the cell and draw the path */
-function calculateMatrix(props) {
-  const { value, ecl, onError } = props;
+function calculateMatrix (props) {
+  const { value, ecl, onError } = props
   try {
-    const matrix = genMatrix(value, ecl);
-    const cellSize = QR_SIZE / matrix.length;
+    const matrix = genMatrix(value, ecl)
+    const cellSize = QR_SIZE / matrix.length
     return {
       value,
       size: QR_SIZE,
       cellSize,
-      path: transformMatrixIntoPath(cellSize, matrix),
-    };
+      path: transformMatrixIntoPath(cellSize, matrix)
+    }
   } catch (error) {
     if (onError && typeof onError === 'function') {
-      onError(error);
+      onError(error)
     } else {
       // Pass the error when no handler presented
-      throw error;
+      throw error
     }
   }
-  return {};
+  return {}
 }
 
 /* project the matrix into path draw */
-function transformMatrixIntoPath(cellSize, matrix) {
-  let d = '';
+function transformMatrixIntoPath (cellSize, matrix) {
+  let d = ''
   matrix.forEach((row, i) => {
-    let needDraw = false;
+    let needDraw = false
     row.forEach((column, j) => {
       if (column) {
         if (!needDraw) {
-          d += `M${cellSize * j} ${cellSize / 2 + cellSize * i} `;
-          needDraw = true;
+          d += `M${cellSize * j} ${cellSize / 2 + cellSize * i} `
+          needDraw = true
         }
         if (needDraw && j === matrix.length - 1) {
-          d += `L${cellSize * (j + 1)} ${cellSize / 2 + cellSize * i} `;
+          d += `L${cellSize * (j + 1)} ${cellSize / 2 + cellSize * i} `
         }
       } else {
         if (needDraw) {
-          d += `L${cellSize * j} ${cellSize / 2 + cellSize * i} `;
-          needDraw = false;
+          d += `L${cellSize * j} ${cellSize / 2 + cellSize * i} `
+          needDraw = false
         }
       }
-    });
-  });
-  return d;
+    })
+  })
+  return d
 }
 
 /**
@@ -107,20 +107,20 @@ export default class QRCode extends PureComponent {
     onError: undefined
   };
 
-  constructor(props) {
-    super(props);
-    this.state = calculateMatrix(props);
+  constructor (props) {
+    super(props)
+    this.state = calculateMatrix(props)
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps (props, state) {
     // if value has changed, re-calculateMatrix
     if (props.value !== state.value || props.size !== state.size) {
-      return calculateMatrix(props);
+      return calculateMatrix(props)
     }
-    return null;
+    return null
   }
 
-  render() {
+  render () {
     const {
       getRef,
       size,
@@ -128,37 +128,37 @@ export default class QRCode extends PureComponent {
       backgroundColor,
       logo,
       quietZone,
-      logoBackgroundColor,
-    } = this.props;
+      logoBackgroundColor
+    } = this.props
 
-    const qr_scale = QR_SIZE / size;
-    const logoSize = this.props.logoSize * qr_scale;
-    const logoMargin = this.props.logoMargin * qr_scale;
-    const logoBorderRadius = this.props.logoBorderRadius * qr_scale;
+    const qrScale = QR_SIZE / size
+    const logoSize = this.props.logoSize * qrScale
+    const logoMargin = this.props.logoMargin * qrScale
+    const logoBorderRadius = this.props.logoBorderRadius * qrScale
 
-    const logoPosition = QR_SIZE / 2 - logoSize / 2 - logoMargin;
-    const logoWrapperSize = logoSize + logoMargin * 2;
+    const logoPosition = QR_SIZE / 2 - logoSize / 2 - logoMargin
+    const logoWrapperSize = logoSize + logoMargin * 2
     const logoWrapperBorderRadius =
-      logoBorderRadius + (logoBorderRadius && logoMargin);
+      logoBorderRadius + (logoBorderRadius && logoMargin)
 
-    const { cellSize, path } = this.state;
+    const { cellSize, path } = this.state
 
     return (
-      <Svg id="rn-qr-svg-container" ref={getRef} width={size} height={size}>
+      <Svg id='rn-qr-svg-container' ref={getRef} width={size} height={size}>
         <Rect width={size} height={size} fill={backgroundColor} />
         <Svg
-          id="qr-container"
+          id='qr-container'
           viewBox={[
             -quietZone / 2,
             -quietZone / 2,
             QR_SIZE + quietZone,
-            QR_SIZE + quietZone,
+            QR_SIZE + quietZone
           ].join(' ')}
           width={size}
           height={size}
         >
           <Defs>
-            <ClipPath id="clip-wrapper">
+            <ClipPath id='clip-wrapper'>
               <Rect
                 width={logoWrapperSize}
                 height={logoWrapperSize}
@@ -166,7 +166,7 @@ export default class QRCode extends PureComponent {
                 ry={logoWrapperBorderRadius}
               />
             </ClipPath>
-            <ClipPath id="clip-logo">
+            <ClipPath id='clip-logo'>
               <Rect
                 width={logoSize}
                 height={logoSize}
@@ -184,21 +184,21 @@ export default class QRCode extends PureComponent {
                 width={logoWrapperSize}
                 height={logoWrapperSize}
                 fill={logoBackgroundColor}
-                clipPath="url(#clip-wrapper)"
+                clipPath='url(#clip-wrapper)'
               />
               <G x={logoMargin} y={logoMargin}>
                 <Image
                   width={logoSize}
                   height={logoSize}
-                  preserveAspectRatio="xMidYMid slice"
+                  preserveAspectRatio='xMidYMid slice'
                   href={logo}
-                  clipPath="url(#clip-logo)"
+                  clipPath='url(#clip-logo)'
                 />
               </G>
             </G>
           )}
         </Svg>
       </Svg>
-    );
+    )
   }
 }
