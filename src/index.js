@@ -1,23 +1,24 @@
-import React, {PureComponent} from 'react';
-import {Image as RNImage} from 'react-native';
+import React, { PureComponent } from 'react';
+import { Image as RNImage } from 'react-native';
 import PropTypes from 'prop-types';
-import Svg, {Defs, G, Rect, Path, Image, ClipPath} from 'react-native-svg';
+import Svg, { Defs, G, Rect, Path, Image, ClipPath } from 'react-native-svg';
 import genMatrix from './genMatrix';
 
+const QR_SIZE = 100;
 const DEFAULT_SIZE = 100;
 const DEFAULT_BG_COLOR = 'white';
 
 /* calculate the size of the cell and draw the path */
 function calculateMatrix(props) {
-  const {value, size, ecl, onError} = props;
+  const { value, ecl, onError } = props;
   try {
     const matrix = genMatrix(value, ecl);
-    const cellSize = size / matrix.length;
+    const cellSize = QR_SIZE / matrix.length;
     return {
       value,
-      size,
+      size: QR_SIZE,
       cellSize,
-      path: transformMatrixIntoPath(cellSize, matrix)
+      path: transformMatrixIntoPath(cellSize, matrix),
     };
   } catch (error) {
     if (onError && typeof onError === 'function') {
@@ -32,7 +33,6 @@ function calculateMatrix(props) {
 
 /* project the matrix into path draw */
 function transformMatrixIntoPath(cellSize, matrix) {
-  // adjust origin
   let d = '';
   matrix.forEach((row, i) => {
     let needDraw = false;
@@ -84,6 +84,8 @@ export default class QRCode extends PureComponent {
     getRef: PropTypes.func,
     /* error correction level */
     ecl: PropTypes.oneOf(['L', 'M', 'Q', 'H']),
+    /* quiet zone around the qr, useful when saving as image */
+    quietZone: PropTypes.number,
     /* Callback function that's called in case if any errors
      * appeared during the process of code generating.
      * Error object is passed to the callback.
@@ -101,6 +103,7 @@ export default class QRCode extends PureComponent {
     logoMargin: 2,
     logoBorderRadius: 0,
     ecl: 'M',
+    quietZone: 0,
     onError: undefined
   };
 
@@ -124,62 +127,77 @@ export default class QRCode extends PureComponent {
       color,
       backgroundColor,
       logo,
-      logoSize,
-      logoMargin,
+      quietZone,
       logoBackgroundColor,
-      logoBorderRadius
     } = this.props;
 
-    const logoPosition = size / 2 - logoSize / 2 - logoMargin;
+    const qr_scale = QR_SIZE / size;
+    const logoSize = this.props.logoSize * qr_scale;
+    const logoMargin = this.props.logoMargin * qr_scale;
+    const logoBorderRadius = this.props.logoBorderRadius * qr_scale;
+
+    const logoPosition = QR_SIZE / 2 - logoSize / 2 - logoMargin;
     const logoWrapperSize = logoSize + logoMargin * 2;
     const logoWrapperBorderRadius =
       logoBorderRadius + (logoBorderRadius && logoMargin);
 
-    const {cellSize, path} = this.state;
+    const { cellSize, path } = this.state;
 
     return (
-      <Svg ref={getRef} width={size} height={size}>
-        <Defs>
-          <ClipPath id="clip-wrapper">
-            <Rect
-              width={logoWrapperSize}
-              height={logoWrapperSize}
-              rx={logoWrapperBorderRadius}
-              ry={logoWrapperBorderRadius}
-            />
-          </ClipPath>
-          <ClipPath id="clip-logo">
-            <Rect
-              width={logoSize}
-              height={logoSize}
-              rx={logoBorderRadius}
-              ry={logoBorderRadius}
-            />
-          </ClipPath>
-        </Defs>
+      <Svg id="rn-qr-svg-container" ref={getRef} width={size} height={size}>
         <Rect width={size} height={size} fill={backgroundColor} />
-        {path && cellSize && (
-          <Path d={path} stroke={color} strokeWidth={cellSize} />
-        )}
-        {logo && (
-          <G x={logoPosition} y={logoPosition}>
-            <Rect
-              width={logoWrapperSize}
-              height={logoWrapperSize}
-              fill={logoBackgroundColor}
-              clipPath="url(#clip-wrapper)"
-            />
-            <G x={logoMargin} y={logoMargin}>
-              <Image
+        <Svg
+          id="qr-container"
+          viewBox={[
+            -quietZone / 2,
+            -quietZone / 2,
+            QR_SIZE + quietZone,
+            QR_SIZE + quietZone,
+          ].join(' ')}
+          width={size}
+          height={size}
+        >
+          <Defs>
+            <ClipPath id="clip-wrapper">
+              <Rect
+                width={logoWrapperSize}
+                height={logoWrapperSize}
+                rx={logoWrapperBorderRadius}
+                ry={logoWrapperBorderRadius}
+              />
+            </ClipPath>
+            <ClipPath id="clip-logo">
+              <Rect
                 width={logoSize}
                 height={logoSize}
-                preserveAspectRatio="xMidYMid slice"
-                href={logo}
-                clipPath="url(#clip-logo)"
+                rx={logoBorderRadius}
+                ry={logoBorderRadius}
               />
+            </ClipPath>
+          </Defs>
+          {path && cellSize && (
+            <Path d={path} stroke={color} strokeWidth={cellSize} />
+          )}
+          {logo && (
+            <G x={logoPosition} y={logoPosition}>
+              <Rect
+                width={logoWrapperSize}
+                height={logoWrapperSize}
+                fill={logoBackgroundColor}
+                clipPath="url(#clip-wrapper)"
+              />
+              <G x={logoMargin} y={logoMargin}>
+                <Image
+                  width={logoSize}
+                  height={logoSize}
+                  preserveAspectRatio="xMidYMid slice"
+                  href={logo}
+                  clipPath="url(#clip-logo)"
+                />
+              </G>
             </G>
-          </G>
-        )}
+          )}
+        </Svg>
       </Svg>
     );
   }
