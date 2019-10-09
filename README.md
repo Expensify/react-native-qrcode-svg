@@ -102,6 +102,7 @@ logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error co
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
 logoMargin | 2 | logo's distance to its wrapper
 logoBorderRadius | 0 | the border-radius of logo image (Android is not supported)
+quietZone | 0 | quiet zone around the qr in pixels (useful when saving image to gallery)
 getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
 onError(error)  | undefined  | Callback fired when exception happened during the code generating process
