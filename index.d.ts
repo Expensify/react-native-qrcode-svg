@@ -24,6 +24,8 @@ export interface QRCodeProps {
   logoMargin?: number
   /* the border-radius of logo image */
   logoBorderRadius?: number
+  /* quiet zone in pixels */
+  quietZone?: number
   /* get svg ref for further usage */
   getRef?: (c: any) => any
   /* error correction level */
