@@ -23,6 +23,12 @@
   "lint-staged": {
     "*.js": "lint"
   },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "example/"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/awesomejerry/react-native-qrcode-svg.git"
