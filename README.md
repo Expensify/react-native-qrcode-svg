@@ -94,7 +94,7 @@ render() {
 Name            | Default    | Description
 ----------------|------------|--------------
 size            | 100        | Size of rendered image in pixels
-value           | 'this is a QR code' | Value of the QR code
+value           | 'this is a QR code' | String Value of the QR code. Can also accept an array of segments as defined in [Manual mode](https://github.com/soldair/node-qrcode#manual-mode). Ex. [{ data: 'ABCDEFG', mode: 'alphanumeric' }, { data: '0123456', mode: 'numeric' }, { data: [253,254,255], mode: 'byte' }]
 color           | 'black'        | Color of the QR code
 backgroundColor | 'white'        | Color of the background
 enableLinearGradient | false     | enables or disables linear gradient

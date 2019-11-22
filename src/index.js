@@ -71,7 +71,13 @@ function transformMatrixIntoPath (cellSize, matrix) {
 export default class QRCode extends PureComponent {
   static propTypes = {
     /* what the qr code stands for */
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.shape({
+        data: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.number)]),
+        mode: PropTypes.string
+      }))
+    ]),
     /* the whole component size */
     size: PropTypes.number,
     /* the color of the cell */
