@@ -35,6 +35,8 @@ export interface QRCodeProps {
   getRef?: (c: any) => any;
   /* error correction level */
   ecl?: "L" | "M" | "Q" | "H";
+  /* error handler called when matrix fails to generate */
+  onError?: Function;
 }
 
 export default QRCode;

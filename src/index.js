@@ -81,12 +81,27 @@ const QRCode = ({
   gradientDirection = ['0%', '0%', '100%', '100%'],
   linearGradient = ['rgb(255,0,0)', 'rgb(0,255,255)'],
   ecl = 'M',
-  getRef
+  getRef,
+  onError
 }) => {
-  const { path, cellSize } = useMemo(
-    () => transformMatrixIntoPath(genMatrix(value, ecl), size),
-    [value, size, ecl]
-  )
+  const result = useMemo(() => {
+    try {
+      return transformMatrixIntoPath(genMatrix(value, ecl), size)
+    } catch (error) {
+      if (onError && typeof onError === 'function') {
+        onError(error)
+      } else {
+        // Pass the error when no handler presented
+        throw error
+      }
+    }
+  }, [value, size, ecl])
+
+  if (!result) {
+    return null
+  }
+
+  const { path, cellSize } = result
 
   return (
     <Svg
