@@ -72,7 +72,7 @@ const QRCode = ({
   color = 'black',
   backgroundColor = 'white',
   logo,
-  logoSize = 100 * 0.2,
+  logoSize = size * 0.2,
   logoBackgroundColor = 'transparent',
   logoMargin = 2,
   logoBorderRadius = 0,
