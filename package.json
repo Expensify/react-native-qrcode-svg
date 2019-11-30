@@ -61,8 +61,8 @@
     "lint-staged": "^4.2.3",
     "pre-commit": "^1.2.2",
     "publish": "^0.6.0",
-    "react": "^16.0.0",
-    "react-test-renderer": "^16.0.0",
+    "react": "^16.8.0",
+    "react-test-renderer": "^16.8.0",
     "standard": "^10.0.3"
   }
 }
