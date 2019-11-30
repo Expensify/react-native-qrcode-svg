@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Svg, {
   Defs,
   G,
@@ -83,9 +83,9 @@ const QRCode = ({
   ecl = 'M',
   getRef
 }) => {
-  const { path, cellSize } = transformMatrixIntoPath(
-    genMatrix(value, ecl),
-    size
+  const { path, cellSize } = useMemo(
+    () => transformMatrixIntoPath(genMatrix(value, ecl), size),
+    [value, size, ecl]
   )
 
   return (
