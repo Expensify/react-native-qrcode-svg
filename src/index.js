@@ -20,26 +20,32 @@ const renderLogo = ({
   logoMargin,
   logoBorderRadius
 }) => {
-  const logoPosition = (size - logoSize - logoMargin * 2) / 2
-  const logoBackgroundSize = logoSize + logoMargin * 2
-  const logoBackgroundBorderRadius =
-    logoBorderRadius + (logoMargin / logoSize) * logoBorderRadius
+  const width = typeof logoSize === 'number' ? logoSize : logoSize.width
+  const height = typeof logoSize === 'number' ? logoSize : logoSize.height
+  const logoPositionX = (size - width - logoMargin * 2) / 2
+  const logoPositionY = (size - height - logoMargin * 2) / 2
+  const logoBackgroundSizeX = width + logoMargin * 2
+  const logoBackgroundSizeY = height + logoMargin * 2
+  const logoBackgroundBorderRadiusX =
+    logoBorderRadius + (logoMargin / width) * logoBorderRadius
+  const logoBackgroundBorderRadiusY =
+    logoBorderRadius + (logoMargin / height) * logoBorderRadius
 
   return (
-    <G x={logoPosition} y={logoPosition}>
+    <G x={logoPositionX} y={logoPositionY}>
       <Defs>
         <ClipPath id='clip-logo-background'>
           <Rect
-            width={logoBackgroundSize}
-            height={logoBackgroundSize}
-            rx={logoBackgroundBorderRadius}
-            ry={logoBackgroundBorderRadius}
+            width={logoBackgroundSizeX}
+            height={logoBackgroundSizeY}
+            rx={logoBackgroundBorderRadiusX}
+            ry={logoBackgroundBorderRadiusY}
           />
         </ClipPath>
         <ClipPath id='clip-logo'>
           <Rect
-            width={logoSize}
-            height={logoSize}
+            width={width}
+            height={height}
             rx={logoBorderRadius}
             ry={logoBorderRadius}
           />
@@ -47,16 +53,16 @@ const renderLogo = ({
       </Defs>
       <G>
         <Rect
-          width={logoBackgroundSize}
-          height={logoBackgroundSize}
+          width={logoBackgroundSizeX}
+          height={logoBackgroundSizeY}
           fill={logoBackgroundColor}
           clipPath='url(#clip-logo-background)'
         />
       </G>
       <G x={logoMargin} y={logoMargin}>
         <Image
-          width={logoSize}
-          height={logoSize}
+          width={width}
+          height={height}
           preserveAspectRatio='xMidYMid slice'
           href={logo}
           clipPath='url(#clip-logo)'
@@ -96,7 +102,6 @@ const QRCode = ({
       }
     }
   }, [value, size, ecl])
-
   if (!result) {
     return null
   }
