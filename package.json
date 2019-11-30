@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/awesomejerry/react-native-qrcode-svg#readme",
   "peerDependencies": {
-    "react-native": ">=0.46.0",
+    "react-native": ">=0.59.0",
     "react": "*",
     "react-native-svg": "^9.6.4"
   },
