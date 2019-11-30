@@ -4,18 +4,31 @@ import renderer from 'react-test-renderer'
 
 describe('QRCode', () => {
   it('renders correctly', () => {
-    const tree = renderer.create(
-      <QRCode />
-    ).toJSON()
+    const tree = renderer.create(<QRCode />).toJSON()
     expect(tree).toMatchSnapshot()
   })
 
   it('renders with logo correctly', () => {
-    const tree = renderer.create(
-      <QRCode
-        logo={{ uri: 'fakeUri' }}
-      />
-    ).toJSON()
+    const tree = renderer.create(<QRCode logo={{ uri: 'fakeUri' }} />).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders with logoSize correctly', () => {
+    const tree = renderer
+      .create(<QRCode logo={{ uri: 'fakeUri' }} logoSize={100} />)
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+
+  it('renders with custom logoSize correctly', () => {
+    const tree = renderer
+      .create(
+        <QRCode
+          logo={{ uri: 'fakeUri' }}
+          logoSize={{ width: 50, height: 80 }}
+        />
+      )
+      .toJSON()
     expect(tree).toMatchSnapshot()
   })
 
@@ -26,22 +39,14 @@ describe('QRCode', () => {
     // Let's try to render with too big amount of data that should
     // throw an exception
     renderer.create(
-      <QRCode
-        value={(new Array(1000000)).join('123')}
-        onError={onErrorMock}
-      />
+      <QRCode value={new Array(1000000).join('123')} onError={onErrorMock} />
     )
     expect(onErrorMock.mock.calls.length).toBe(1)
   })
 
   it('does not call onError in case if value is fine', () => {
     const onErrorMock = jest.fn()
-    renderer.create(
-      <QRCode
-        value='123'
-        onError={onErrorMock}
-      />
-    )
+    renderer.create(<QRCode value='123' onError={onErrorMock} />)
     expect(onErrorMock.mock.calls.length).toBe(0)
   })
 })
