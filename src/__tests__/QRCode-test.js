@@ -44,4 +44,20 @@ describe('QRCode', () => {
     )
     expect(onErrorMock.mock.calls.length).toBe(0)
   })
+
+  it('renders with segmented value', () => {
+    const onErrorMock = jest.fn()
+    const segs = [
+      { data: [1, 2, 3], mode: 'byte' },
+      { data: 'ABCDEF', mode: 'alphanumeric' }
+    ]
+    const tree = renderer.create(
+      <QRCode
+        value={segs}
+        onError={onErrorMock}
+      />
+    ).toJSON()
+    expect(onErrorMock.mock.calls.length).toBe(0)
+    expect(tree).toMatchSnapshot()
+  })
 })
