@@ -14,7 +14,9 @@
     "check-update": "yarn upgrade-interactive"
   },
   "standard": {
-    "env": ["jest"],
+    "env": [
+      "jest"
+    ],
     "parser": "babel-eslint"
   },
   "pre-commit": "lint-staged",
@@ -22,13 +24,20 @@
     "*.js": "lint"
   },
   "jest": {
-    "testPathIgnorePatterns": ["/node_modules/", "example/"]
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "example/"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/awesomejerry/react-native-qrcode-svg.git"
   },
-  "keywords": ["react-native", "qrcode", "svg"],
+  "keywords": [
+    "react-native",
+    "qrcode",
+    "svg"
+  ],
   "author": "awesomejerry",
   "license": "MIT",
   "bugs": {
@@ -42,7 +51,7 @@
   },
   "dependencies": {
     "prop-types": "^15.5.10",
-    "qrcode": "^1.2.0"
+    "qrcode": "^1.3.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",
