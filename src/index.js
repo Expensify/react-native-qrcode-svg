@@ -128,10 +128,13 @@ const QRCode = ({
         </LinearGradient>
       </Defs>
       <G>
-        <Rect 
-        x={-quietZone}
-        y={-quietZone}
-        width={size+(quietZone*2)} height={size+(quietZone*2)} fill={backgroundColor} />
+        <Rect
+          x={-quietZone}
+          y={-quietZone}
+          width={size + quietZone * 2}
+          height={size + quietZone * 2}
+          fill={backgroundColor}
+        />
       </G>
       <G>
         <Path
