@@ -8,9 +8,9 @@
     "prepare": "rm -rf example",
     "test": "jest",
     "test:update": "npm run test -- --updateSnapshot",
-    "lint:staged": "lint-staged",
     "lint": "standard 'src/**/*.js'",
     "lint:fix": "standard 'src/**/*.js' --fix",
+    "lint:staged": "lint-staged",
     "check:update": "npx npm-check-updates -u",
     "check:outdated": "npm outdated"
   },
@@ -19,10 +19,6 @@
       "jest"
     ],
     "parser": "babel-eslint"
-  },
-  "pre-commit": "lint:staged",
-  "lint-staged": {
-    "*.js": "lint"
   },
   "jest": {
     "testPathIgnorePatterns": [
@@ -57,10 +53,10 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.4.0",
+    "husky": "^4.2.5",
     "jest": "^25.4.0",
     "lint-staged": "^10.1.7",
     "metro-react-native-babel-preset": "^0.59.0",
-    "pre-commit": "^1.2.2",
     "react": "^16.8.0",
     "react-test-renderer": "^16.13.1",
     "standard": "^14.3.3"
