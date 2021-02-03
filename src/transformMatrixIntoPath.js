@@ -6,7 +6,7 @@ export default (matrix, size) => {
     row.forEach((column, j) => {
       if (column) {
         if (!needDraw) {
-          path += `M${cellSize * (j + 1)} ${cellSize / 2 + cellSize * i} `
+          path += `M${cellSize * j} ${cellSize / 2 + cellSize * i} `
           needDraw = true
         }
         if (needDraw && j === matrix.length - 1) {
