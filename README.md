@@ -111,6 +111,7 @@ size            | 100        | Size of rendered image in pixels
 value           | 'this is a QR code' | String Value of the QR code. Can also accept an array of segments as defined in [Manual mode](https://github.com/soldair/node-qrcode#manual-mode). Ex. [{ data: 'ABCDEFG', mode: 'alphanumeric' }, { data: '0123456', mode: 'numeric' }, { data: [253,254,255], mode: 'byte' }]
 color           | 'black'        | Color of the QR code
 backgroundColor | 'white'        | Color of the background
+mode            | 'default'      | Style mode for QR. Valid values are "default" or "circle" 
 enableLinearGradient | false     | enables or disables linear gradient
 linearGradient  |  ['rgb(255,0,0)','rgb(0,255,255)']  | array of 2 rgb colors used to create the linear gradient
 gradientDirection| [170,0,0,0]  | the direction of the linear gradient
