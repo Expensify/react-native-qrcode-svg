@@ -37,6 +37,8 @@ export interface QRCodeProps {
   ecl?: "L" | "M" | "Q" | "H";
   /* error handler called when matrix fails to generate */
   onError?: Function;
+  /* mode of qr code default with draw path and circle will make circles. Defaults to normal*/
+  mode?: "default" | "circle";
 }
 
 export default QRCode;

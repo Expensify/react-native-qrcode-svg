@@ -11,6 +11,7 @@ import Svg, {
 } from 'react-native-svg'
 import genMatrix from './genMatrix'
 import transformMatrixIntoPath from './transformMatrixIntoPath'
+import transformMatrixIntoCirclePath from './transformMatrixIntoCirclePath'
 
 const renderLogo = ({
   size,
@@ -81,12 +82,17 @@ const QRCode = ({
   gradientDirection = ['0%', '0%', '100%', '100%'],
   linearGradient = ['rgb(255,0,0)', 'rgb(0,255,255)'],
   ecl = 'M',
+  mode = 'default',
   getRef,
   onError
 }) => {
   const result = useMemo(() => {
     try {
-      return transformMatrixIntoPath(genMatrix(value, ecl), size)
+      if (mode === 'default') {
+        return transformMatrixIntoPath(genMatrix(value, ecl), size)
+      } else {
+        return transformMatrixIntoCirclePath(genMatrix(value, ecl), size)
+      }
     } catch (error) {
       if (onError && typeof onError === 'function') {
         onError(error)
@@ -139,9 +145,10 @@ const QRCode = ({
       <G>
         <Path
           d={path}
+          fill={enableLinearGradient ? 'url(#grad)' : color}
           strokeLinecap='butt'
           stroke={enableLinearGradient ? 'url(#grad)' : color}
-          strokeWidth={cellSize}
+          strokeWidth={mode === 'default' ? cellSize : 0}
         />
       </G>
       {logo &&
