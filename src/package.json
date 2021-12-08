@@ -1,0 +1,4 @@
+{
+  "name": "react-native-qrcode-svg",
+  "description": "Add this file in order for `npm link` to work"
+}
