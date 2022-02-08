@@ -114,8 +114,6 @@ const QRCode = ({
         size + quietZone * 2,
         size + quietZone * 2
       ].join(' ')}
-      width={size}
-      height={size}
       style={style}
       preserveAspectRatio={preserveAspectRatio}
     >
