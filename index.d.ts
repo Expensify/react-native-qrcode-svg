@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Image, ImageSourcePropType } from "react-native";
 
-declare class QRCode extends React.PureComponent<QRCodeProps, any> {}
+declare const QRCode: React.FC<QRCodeProps>;
 
 export interface QRCodeProps {
   /* what the qr code stands for */
