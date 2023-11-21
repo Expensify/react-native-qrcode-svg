@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, ImageSourcePropType } from "react-native";
+import { ImageSourcePropType } from "react-native";
 
 declare class QRCode extends React.PureComponent<QRCodeProps, any> {}
 
@@ -35,6 +35,8 @@ export interface QRCodeProps {
   getRef?: (c: any) => any;
   /* error correction level */
   ecl?: "L" | "M" | "Q" | "H";
+  /* Renderind mode */
+  mode?: "default" | "rounded";
   /* error handler called when matrix fails to generate */
   onError?: Function;
 }
