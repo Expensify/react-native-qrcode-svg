@@ -1,16 +1,17 @@
 import React, { useMemo } from 'react'
 import Svg, {
+  ClipPath,
   Defs,
   G,
+  Image,
+  LinearGradient,
   Path,
   Rect,
-  Image,
-  ClipPath,
-  LinearGradient,
   Stop
 } from 'react-native-svg'
 import genMatrix from './genMatrix'
 import transformMatrixIntoPath from './transformMatrixIntoPath'
+import transformMatrixIntoRoundedPath from './transformMatrixIntoRoundedPath'
 
 const renderLogo = ({
   size,
@@ -81,12 +82,18 @@ const QRCode = ({
   gradientDirection = ['0%', '0%', '100%', '100%'],
   linearGradient = ['rgb(255,0,0)', 'rgb(0,255,255)'],
   ecl = 'M',
+  mode = 'default',
   getRef,
   onError
 }) => {
   const result = useMemo(() => {
     try {
-      return transformMatrixIntoPath(genMatrix(value, ecl), size)
+      const matrix = genMatrix(value, ecl);
+      switch (mode) {
+        case 'rounded':
+          return transformMatrixIntoRoundedPath(matrix, size);
+        default: return transformMatrixIntoPath(matrix, size);
+      }
     } catch (error) {
       if (onError && typeof onError === 'function') {
         onError(error)
@@ -95,7 +102,7 @@ const QRCode = ({
         throw error
       }
     }
-  }, [value, size, ecl])
+  }, [value, size, ecl, mode])
 
   if (!result) {
     return null
@@ -135,15 +142,23 @@ const QRCode = ({
           height={size + quietZone * 2}
           fill={backgroundColor}
         />
-      </G>
-      <G>
+      </G>  
+      {mode === 'default' ? <G>
         <Path
           d={path}
           strokeLinecap='butt'
           stroke={enableLinearGradient ? 'url(#grad)' : color}
           strokeWidth={cellSize}
+          opacity={0.5}
         />
-      </G>
+      </G> : null}
+      {mode === 'rounded' ? <G>
+        <Path
+          d={path}
+          strokeLinejoin='round'
+          fill={enableLinearGradient ? 'url(#grad)' : color}
+        />
+      </G> : null}
       {logo &&
         renderLogo({
           size,
