@@ -82,7 +82,9 @@ const QRCode = ({
   linearGradient = ['rgb(255,0,0)', 'rgb(0,255,255)'],
   ecl = 'M',
   getRef,
-  onError
+  onError,
+  preserveAspectRatio,
+  style
 }) => {
   const result = useMemo(() => {
     try {
@@ -112,8 +114,8 @@ const QRCode = ({
         size + quietZone * 2,
         size + quietZone * 2
       ].join(' ')}
-      width={size}
-      height={size}
+      style={style}
+      preserveAspectRatio={preserveAspectRatio}
     >
       <Defs>
         <LinearGradient
