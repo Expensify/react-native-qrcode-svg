@@ -14,8 +14,9 @@ export interface QRCodeProps {
   /* the color of the background */
   backgroundColor?: string;
   /* SVG to render as logo.
-  * If this prop is provided then `logo` prop will be ignored. */
-  logoSVG?: React.FC<SvgProps>;
+  * Can be either a svg string or a React component if you're using ex: '@svgr/webpack' or similar
+  * In case both this prop `logo` is provided, then this takes precedence and `logo` will be ignored. */
+  logoSVG?: React.FC<SvgProps> | string;
   /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
   logo?: ImageSourcePropType;
   /* logo size in pixels */
