@@ -11,15 +11,19 @@ import Svg, {
 } from 'react-native-svg'
 import genMatrix from './genMatrix'
 import transformMatrixIntoPath from './transformMatrixIntoPath'
+import LogoSVG from './LogoSVG'
 
 const renderLogo = ({
   size,
   logo,
+  logoSVG,
   logoSize,
   logoBackgroundColor,
+  logoColor,
   logoMargin,
-  logoBorderRadius
+  logoBorderRadius,
 }) => {
+
   const logoPosition = (size - logoSize - logoMargin * 2) / 2
   const logoBackgroundSize = logoSize + logoMargin * 2
   const logoBackgroundBorderRadius =
@@ -54,13 +58,19 @@ const renderLogo = ({
         />
       </G>
       <G x={logoMargin} y={logoMargin}>
-        <Image
-          width={logoSize}
-          height={logoSize}
-          preserveAspectRatio='xMidYMid slice'
-          href={logo}
-          clipPath='url(#clip-logo)'
+        {logoSVG ? (
+          <G clipPath='url(#clip-logo)'>
+            <LogoSVG svg={logoSVG} logoSize={logoSize} logoColor={logoColor} />
+          </G>
+        ) : (
+            <Image
+              width={logoSize}
+              height={logoSize}
+              preserveAspectRatio='xMidYMid slice'
+              href={logo}
+              clipPath='url(#clip-logo)'
         />
+        )}
       </G>
     </G>
   )
@@ -72,8 +82,10 @@ const QRCode = ({
   color = 'black',
   backgroundColor = 'white',
   logo,
+  logoSVG,
   logoSize = size * 0.2,
   logoBackgroundColor = 'transparent',
+  logoColor = "#000000",
   logoMargin = 2,
   logoBorderRadius = 0,
   quietZone = 0,
@@ -101,7 +113,8 @@ const QRCode = ({
     return null
   }
 
-  const { path, cellSize } = result
+  const { path, cellSize } = result;
+  const displayLogo = logo || logoSVG;
 
   return (
     <Svg
@@ -144,14 +157,16 @@ const QRCode = ({
           strokeWidth={cellSize}
         />
       </G>
-      {logo &&
+      {displayLogo &&
         renderLogo({
           size,
           logo,
+          logoSVG,
           logoSize,
           logoBackgroundColor,
+          logoColor,
           logoMargin,
-          logoBorderRadius
+          logoBorderRadius,
         })}
     </Svg>
   )

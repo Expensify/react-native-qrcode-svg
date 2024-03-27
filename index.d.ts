@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Image, ImageSourcePropType } from "react-native";
+import {ImageSourcePropType} from "react-native";
+import type {SvgProps} from "react-native-svg";
 
 declare class QRCode extends React.PureComponent<QRCodeProps, any> {}
 
@@ -12,6 +13,9 @@ export interface QRCodeProps {
   color?: string;
   /* the color of the background */
   backgroundColor?: string;
+  /* SVG to render as logo.
+  * If this prop is provided then `logo` prop will be ignored. */
+  logoSVG?: React.FC<SvgProps>;
   /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
   logo?: ImageSourcePropType;
   /* logo size in pixels */
@@ -19,6 +23,9 @@ export interface QRCodeProps {
   /* the logo gets a filled rectangular background with this color. Use 'transparent'
          if your logo already has its own backdrop. Default = same as backgroundColor */
   logoBackgroundColor?: string;
+  /* If the logo is provided via SVG this color will be set as it's `fill` property
+  * it does nothing if logo is provided as an Image source object */
+  logoColor?: string;
   /* logo's distance to its wrapper */
   logoMargin?: number;
   /* the border-radius of logo image */
