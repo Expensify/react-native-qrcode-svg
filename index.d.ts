@@ -15,7 +15,7 @@ export interface QRCodeProps {
   backgroundColor?: string;
   /* SVG to render as logo.
   * Can be either a svg string or a React component if you're using ex: '@svgr/webpack' or similar
-  * In case both this prop `logo` is provided, then this takes precedence and `logo` will be ignored. */
+  * In case both this prop and `logo` are provided, then this prop takes precedence and `logo` will be ignored. */
   logoSVG?: React.FC<SvgProps> | string;
   /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
   logo?: ImageSourcePropType;
@@ -24,8 +24,8 @@ export interface QRCodeProps {
   /* the logo gets a filled rectangular background with this color. Use 'transparent'
          if your logo already has its own backdrop. Default = same as backgroundColor */
   logoBackgroundColor?: string;
-  /* If the logo is provided via SVG this color will be set as it's `fill` property
-  * it does nothing if logo is provided as an Image source object */
+  /* If the logo is provided via `logoSVG` prop, this color will be set as it's `fill` property,
+  * otherwise it does nothing */
   logoColor?: string;
   /* logo's distance to its wrapper */
   logoMargin?: number;

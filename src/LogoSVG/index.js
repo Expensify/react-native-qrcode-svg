@@ -13,7 +13,7 @@ const LogoSVG = ({ svg, logoSize, logoColor }) => {
         />
     }
 
-    // if svg prop is actually a svg wrapped in a React component, then we can just render it
+    // if `svg` prop is actually a svg asset wrapped in a React component, then we can just render it
     const LogoSVGComponent = svg;
 
     return <LogoSVGComponent fill={logoColor} width={logoSize} height={logoSize} />;
