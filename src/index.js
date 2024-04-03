@@ -15,6 +15,7 @@ import LogoSVG from './LogoSVG'
 
 const renderLogo = ({
   size,
+  backgroundColor,
   logo,
   logoSVG,
   logoSize,
@@ -23,7 +24,6 @@ const renderLogo = ({
   logoMargin,
   logoBorderRadius,
 }) => {
-
   const logoPosition = (size - logoSize - logoMargin * 2) / 2
   const logoBackgroundSize = logoSize + logoMargin * 2
   const logoBackgroundBorderRadius =
@@ -53,15 +53,18 @@ const renderLogo = ({
         <Rect
           width={logoBackgroundSize}
           height={logoBackgroundSize}
-          fill={logoBackgroundColor}
+          fill={backgroundColor}
           clipPath='url(#clip-logo-background)'
         />
       </G>
-      <G x={logoMargin} y={logoMargin}>
+      <G x={logoMargin} y={logoMargin} clipPath='url(#clip-logo)'>
+        <Rect
+            width={logoBackgroundSize - logoMargin}
+            height={logoBackgroundSize - logoMargin}
+            fill={logoBackgroundColor}
+        />
         {logoSVG ? (
-          <G clipPath='url(#clip-logo)'>
             <LogoSVG svg={logoSVG} logoSize={logoSize} logoColor={logoColor} />
-          </G>
         ) : (
             <Image
               width={logoSize}
@@ -85,7 +88,7 @@ const QRCode = ({
   logoSVG,
   logoSize = size * 0.2,
   logoBackgroundColor = 'transparent',
-  logoColor = "#000000",
+  logoColor,
   logoMargin = 2,
   logoBorderRadius = 0,
   quietZone = 0,
@@ -160,6 +163,7 @@ const QRCode = ({
       {displayLogo &&
         renderLogo({
           size,
+          backgroundColor,
           logo,
           logoSVG,
           logoSize,
