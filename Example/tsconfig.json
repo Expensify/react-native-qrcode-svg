@@ -1,6 +1,8 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
+  "include": ["src/**/*"],
   "compilerOptions": {
+    "jsx": "react",
     "skipLibCheck": true
   }
 }
