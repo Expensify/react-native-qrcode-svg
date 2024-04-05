@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView, Text} from 'react-native';
 import SVG from './assets/ruby.svg';
 import styles from './styles';
-import QRCodeWithDescription from './components/QRCodeWithDescription.tsx';
+import QRCodeWithDescription from './components/QRCodeWithDescription';
 
 const rubyUrl = 'https://www.ruby-lang.org/';
 const googleUrl = 'https://www.google.com/';
