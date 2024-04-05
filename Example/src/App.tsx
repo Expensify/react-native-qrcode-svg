@@ -1,36 +1,8 @@
 import React from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import QRCode, {QRCodeProps} from 'react-native-qrcode-svg';
+import {ScrollView, Text} from 'react-native';
 import SVG from './assets/ruby.svg';
-
-type QRCodeWithDescriptionProps = {
-  text: string;
-  qrCode: QRCodeProps;
-};
-
-const QRCodeWithDescription = ({text, qrCode}: QRCodeWithDescriptionProps) => (
-  <View style={styles.scrollViewElement}>
-    <Text style={styles.text}>{text}</Text>
-    <QRCode {...qrCode} />
-  </View>
-);
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 36,
-    fontWeight: 'bold',
-  },
-  text: {
-    fontSize: 24,
-  },
-  scrollViewElement: {
-    alignItems: 'center',
-    margin: '1%',
-  },
-  scrollViewContainer: {
-    alignItems: 'center',
-  },
-});
+import styles from './styles';
+import QRCodeWithDescription from './components/QRCodeWithDescription.tsx';
 
 const rubyUrl = 'https://www.ruby-lang.org/';
 const googleUrl = 'https://www.google.com/';

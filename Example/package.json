@@ -8,7 +8,7 @@
     "web": "webpack serve",
     "macos": "react-native run-macos",
     "lint": "eslint .",
-    "prettier": "prettier --write ./src/*.tsx",
+    "prettier": "prettier --write ./src/**/*.{tsx,ts}",
     "start": "react-native start",
     "test": "jest"
   },
