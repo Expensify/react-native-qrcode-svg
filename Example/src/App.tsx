@@ -8,11 +8,12 @@ import {
 import QRCode from "react-native-qrcode-svg";
 
 const App = () => {
+
     return (
         <SafeAreaView>
             <StatusBar barStyle='dark-content' />
             <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 24}}>React Native Web App Example</Text>
+                <Text style={{fontSize: 24}}>react-native-qrcode-svg example</Text>
 
                 <QRCode
                     value={"https://www.google.com/"}

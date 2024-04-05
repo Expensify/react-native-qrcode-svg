@@ -46,6 +46,4 @@ const config = {
     },
 };
 
-console.log("di[a");
-
 module.exports = mergeConfig(getDefaultConfig(__dirname), config);
