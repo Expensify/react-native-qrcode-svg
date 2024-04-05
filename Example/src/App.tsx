@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
   },
 });
 
+const rubyUrl = 'https://www.ruby-lang.org/';
+const googleUrl = 'https://www.google.com/';
+const qrCodeSize = 200;
+const logoSize = 100;
+
 const defaultQRCode = (
   <QRCodeWithDescription text={'Default QR code'} qrCode={{}} />
 );
@@ -41,7 +46,7 @@ const colorfulQRCODe = (
     text={'QR code with changed colors'}
     qrCode={{
       value: 'Some colorful qr code',
-      size: 200,
+      size: qrCodeSize,
       color: 'darkblue',
       backgroundColor: 'lightblue',
     }}
@@ -52,10 +57,10 @@ const urlPngQRCode = (
   <QRCodeWithDescription
     text={'PNG url'}
     qrCode={{
-      value: 'https://www.google.com/',
-      size: 200,
+      value: googleUrl,
+      size: qrCodeSize,
       logo: 'https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png',
-      logoSize: 100,
+      logoSize,
       logoBorderRadius: 200,
     }}
   />
@@ -65,10 +70,10 @@ const localPngQRCode = (
   <QRCodeWithDescription
     text={'PNG local'}
     qrCode={{
-      value: 'https://www.google.com/',
-      size: 200,
+      value: googleUrl,
+      size: qrCodeSize,
       logo: require('./assets/google.png'),
-      logoSize: 100,
+      logoSize,
     }}
   />
 );
@@ -77,11 +82,11 @@ const localPngBackgroundColorQRCode = (
   <QRCodeWithDescription
     text={'PNG local - background color'}
     qrCode={{
-      value: 'https://www.google.com/',
-      size: 200,
+      value: googleUrl,
+      size: qrCodeSize,
       logo: require('./assets/google.png'),
       logoBackgroundColor: 'pink',
-      logoSize: 100,
+      logoSize,
     }}
   />
 );
@@ -90,10 +95,10 @@ const urlSvgQRCode = (
   <QRCodeWithDescription
     text={'SVG url'}
     qrCode={{
-      value: 'https://www.ruby-lang.org/',
-      size: 200,
+      value: rubyUrl,
+      size: qrCodeSize,
       logoSVG: 'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg',
-      logoSize: 100,
+      logoSize,
     }}
   />
 );
@@ -117,10 +122,10 @@ const stringSvgQRCode = (
   <QRCodeWithDescription
     text={'SVG raw (string)'}
     qrCode={{
-      value: 'https://www.ruby-lang.org/',
-      size: 200,
+      value: rubyUrl,
+      size: qrCodeSize,
       logoSVG: xml,
-      logoSize: 100,
+      logoSize,
     }}
   />
 );
@@ -129,10 +134,10 @@ const localSvgQRCode = (
   <QRCodeWithDescription
     text={'SVG local'}
     qrCode={{
-      value: 'https://www.ruby-lang.org/',
-      size: 200,
+      value: rubyUrl,
+      size: qrCodeSize,
       logoSVG: SVG,
-      logoSize: 100,
+      logoSize,
     }}
   />
 );
