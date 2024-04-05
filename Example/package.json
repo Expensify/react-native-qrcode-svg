@@ -6,6 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "web": "webpack serve",
+    "macos": "react-native run-macos",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
@@ -14,6 +15,7 @@
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
     "react": "18.2.0",
     "react-native": "^0.73.6",
+    "react-native-macos": "^0.73.0-0",
     "react-native-qrcode-svg": "link:../",
     "react-native-svg": "^15.1.0",
     "react-native-web": "^0.19.10",
