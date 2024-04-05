@@ -40,6 +40,7 @@ module.exports = {
         symlinks: false,
         alias: {
             'react-native$': 'react-native-web',
+            'react': path.resolve('./node_modules/react')
         },
         extensions: [
             '.web.ts',
