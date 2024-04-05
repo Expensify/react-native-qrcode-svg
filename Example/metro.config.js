@@ -16,6 +16,7 @@ const root = path.resolve(__dirname, '..');
 
 const modules = [
     ...Object.keys(pack.peerDependencies),
+    'react-native-macos'
 ];
 
 const config = {
@@ -29,6 +30,7 @@ const config = {
             modules.map(
                 m => new RegExp(`^${escape(path.join(root, 'node_modules', m))}\\/.*$`),
             ),
+            new RegExp(`${path.join(__dirname, 'macos').replace(/[/\\]+/g, '/')}.*`),
         ),
 
         extraNodeModules: modules.reduce((acc, name) => {
