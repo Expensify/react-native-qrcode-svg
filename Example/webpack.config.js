@@ -21,7 +21,7 @@ module.exports = {
         use: {loader: 'babel-loader'},
         include: [
           fromRoot('index.js'),
-          fromRoot('src'),
+          fromRoot('src/'),
           fromRoot('node_modules/react-native-qrcode-svg'),
         ],
       },
@@ -57,10 +57,4 @@ module.exports = {
       '.jsx',
     ],
   },
-  plugins: [
-    new (require('webpack').DefinePlugin)({
-      process: {env: {}},
-      __DEV__: 'true',
-    }),
-  ],
 };

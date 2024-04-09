@@ -1,6 +1,7 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "global.d.ts"],
+  "esModuleInterop": true,
   "compilerOptions": {
     "jsx": "react",
     "skipLibCheck": true

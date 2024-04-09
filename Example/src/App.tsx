@@ -2,7 +2,8 @@ import React from 'react';
 import {ScrollView, Text} from 'react-native';
 import SVG from './assets/ruby.svg';
 import styles from './styles';
-import QRCodeWithDescription from './components/QRCodeWithDescription';
+import Description from './components/Description';
+import QRCode from 'react-native-qrcode-svg';
 
 const rubyUrl = 'https://www.ruby-lang.org/';
 const googleUrl = 'https://www.google.com/';
@@ -10,69 +11,66 @@ const qrCodeSize = 200;
 const logoSize = 100;
 
 const defaultQRCode = (
-  <QRCodeWithDescription text={'Default QR code'} qrCode={{}} />
+  <Description text="Default QR code">
+    <QRCode />
+  </Description>
 );
 
 const colorfulQRCODe = (
-  <QRCodeWithDescription
-    text={'QR code with changed colors'}
-    qrCode={{
-      value: 'Some colorful qr code',
-      size: qrCodeSize,
-      color: 'darkblue',
-      backgroundColor: 'lightblue',
-    }}
-  />
+  <Description text="QR code with changed colors">
+    <QRCode
+      value="Some colorful qr code"
+      size={qrCodeSize}
+      color="darkblue"
+      backgroundColor="lightblue"
+    />
+  </Description>
 );
 
 const urlPngQRCode = (
-  <QRCodeWithDescription
-    text={'PNG url'}
-    qrCode={{
-      value: googleUrl,
-      size: qrCodeSize,
-      logo: 'https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png',
-      logoSize,
-      logoBorderRadius: 200,
-    }}
-  />
+  <Description text="QR code with PNG from url avatar">
+    <QRCode
+      value={googleUrl}
+      size={qrCodeSize}
+      logo="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png"
+      logoSize={logoSize}
+      logoBorderRadius={200}
+    />
+  </Description>
 );
 
 const localPngQRCode = (
-  <QRCodeWithDescription
-    text={'PNG local'}
-    qrCode={{
-      value: googleUrl,
-      size: qrCodeSize,
-      logo: require('./assets/google.png'),
-      logoSize,
-    }}
-  />
+  <Description text="QR code with local PNG avatar">
+    <QRCode
+      value={googleUrl}
+      size={qrCodeSize}
+      logo={require('./assets/google.png')}
+      logoSize={logoSize}
+    />
+  </Description>
 );
 
 const localPngBackgroundColorQRCode = (
-  <QRCodeWithDescription
-    text={'PNG local - background color'}
-    qrCode={{
-      value: googleUrl,
-      size: qrCodeSize,
-      logo: require('./assets/google.png'),
-      logoBackgroundColor: 'pink',
-      logoSize,
-    }}
-  />
+  <Description text="QR code with local PNG with background color avatar">
+    <QRCode
+      value={googleUrl}
+      size={qrCodeSize}
+      logo={require('./assets/google.png')}
+      logoBackgroundColor="pink"
+      logoSize={logoSize}
+    />
+  </Description>
 );
 
 const urlSvgQRCode = (
-  <QRCodeWithDescription
-    text={'SVG url'}
-    qrCode={{
-      value: rubyUrl,
-      size: qrCodeSize,
-      logoSVG: 'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg',
-      logoSize,
-    }}
-  />
+  <Description text="QR code with SVG from url avatar">
+    <QRCode
+      value={rubyUrl}
+      size={qrCodeSize}
+      logoSVG="https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/ruby.svg"
+      logoSize={logoSize}
+    />
+  </Description>
 );
 
 const xml = `
@@ -91,27 +89,25 @@ const xml = `
 `;
 
 const stringSvgQRCode = (
-  <QRCodeWithDescription
-    text={'SVG raw (string)'}
-    qrCode={{
-      value: rubyUrl,
-      size: qrCodeSize,
-      logoSVG: xml,
-      logoSize,
-    }}
-  />
+  <Description text="QR code with raw SVG (string) avatar">
+    <QRCode
+      value={rubyUrl}
+      size={qrCodeSize}
+      logoSVG={xml}
+      logoSize={logoSize}
+    />
+  </Description>
 );
 
 const localSvgQRCode = (
-  <QRCodeWithDescription
-    text={'SVG local'}
-    qrCode={{
-      value: rubyUrl,
-      size: qrCodeSize,
-      logoSVG: SVG,
-      logoSize,
-    }}
-  />
+  <Description text="QR code with local SVG avatar">
+    <QRCode
+      value={rubyUrl}
+      size={qrCodeSize}
+      logoSVG={SVG}
+      logoSize={logoSize}
+    />
+  </Description>
 );
 
 const App = () => {

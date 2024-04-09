@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "prettier": "prettier --write ./src/**/*.{tsx,ts}",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
