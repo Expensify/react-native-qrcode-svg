@@ -13,7 +13,7 @@ export interface QRCodeProps {
   /* the color of the background */
   backgroundColor?: string;
   /* an image source object. example {uri: 'base64string'} or {require('pathToImage')} */
-  logo?: ImageSourcePropType;
+  logo?: ImageSourcePropType | string;
   /* logo size in pixels */
   logoSize?: number;
   /* the logo gets a filled rectangular background with this color. Use 'transparent'
