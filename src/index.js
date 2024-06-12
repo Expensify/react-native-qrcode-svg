@@ -57,7 +57,6 @@ const renderLogo = ({
         <Image
           width={logoSize}
           height={logoSize}
-          preserveAspectRatio='xMidYMid slice'
           href={logo}
           clipPath='url(#clip-logo)'
         />
