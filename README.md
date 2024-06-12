@@ -19,6 +19,11 @@ Discussion: https://discord.gg/RvFM97v
 | - | - |
 | <img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/android.png" width="240"> | <img src="https://raw.githubusercontent.com/awesomejerry/react-native-qrcode-svg/master/screenshot/ios.png" width="240"> |
 
+
+| QRCode rectangle logo |
+| - |
+| <img src="./screenshot/qrcode_rectanglelogo.png" width="140"> |
+
 ## Installation
 
 Install dependency packages
@@ -118,10 +123,13 @@ enableLinearGradient | false     | enables or disables linear gradient
 linearGradient  |  ['rgb(255,0,0)','rgb(0,255,255)']  | array of 2 rgb colors used to create the linear gradient
 gradientDirection| [170,0,0,0]  | the direction of the linear gradient
 logo | null        | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}
-logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error correction in QR code
+logoWidth | 20% of size | Width of the imprinted logo. Bigger logo = less error correction in QR code
+logoHeight | 20% of size | Height of the imprinted logo. Bigger logo = less error correction in QR code
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
-logoMargin | 2 | logo's distance to its wrapper
+logoMarginX | 2 | logo's horizontal distance to its wrapper
+logoMarginY | 2 | logo's vertical distance to its wrapper
 logoBorderRadius | 0 | the border-radius of logo image (Android is not supported)
+logoPreserveAspectRatio | 'xMidYMid slice' | the preserveAspectRatio of logo image. If you want to change the zoom property of the image, please see the [preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio) property for image in SVG.
 quietZone | 0 | quiet zone around the qr in pixels (useful when saving image to gallery)
 getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
