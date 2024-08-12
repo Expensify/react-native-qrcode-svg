@@ -76,6 +76,7 @@ const QRCode = ({
     ecl = 'M',
     getRef,
     onError,
+    testID
 }) => {
     const result = useMemo(() => {
         try {
@@ -98,6 +99,7 @@ const QRCode = ({
 
     return (
         <Svg
+            testID={testID}
             ref={getRef}
             viewBox={[-quietZone, -quietZone, size + quietZone * 2, size + quietZone * 2].join(' ')}
             width={size}
