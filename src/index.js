@@ -106,6 +106,7 @@ const QRCode = ({
 
   return (
     <Svg
+      testID={testID}
       ref={getRef}
       viewBox={[
         -quietZone,
