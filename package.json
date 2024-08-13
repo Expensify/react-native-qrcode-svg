@@ -42,13 +42,14 @@
   },
   "homepage": "https://github.com/awesomejerry/react-native-qrcode-svg#readme",
   "peerDependencies": {
-    "react-native": ">=0.63.4",
     "react": "*",
+    "react-native": ">=0.63.4",
     "react-native-svg": ">=13.2.0"
   },
   "dependencies": {
     "prop-types": "^15.8.0",
-    "qrcode": "^1.5.1"
+    "qrcode": "^1.5.1",
+    "text-encoding": "^0.7.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
