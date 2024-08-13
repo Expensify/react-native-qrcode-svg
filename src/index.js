@@ -60,23 +60,23 @@ const renderLogo = ({
 };
 
 const QRCode = ({
-    value = 'this is a QR code',
-    size = 100,
-    color = 'black',
-    backgroundColor = 'white',
-    logo,
-    logoSize = size * 0.2,
-    logoBackgroundColor = 'transparent',
-    logoMargin = 2,
-    logoBorderRadius = 0,
-    quietZone = 0,
-    enableLinearGradient = false,
-    gradientDirection = ['0%', '0%', '100%', '100%'],
-    linearGradient = ['rgb(255,0,0)', 'rgb(0,255,255)'],
-    ecl = 'M',
-    getRef,
-    onError,
-    testID
+  value = 'this is a QR code',
+  size = 100,
+  color = 'black',
+  backgroundColor = 'white',
+  logo,
+  logoSize = size * 0.2,
+  logoBackgroundColor = 'transparent',
+  logoMargin = 2,
+  logoBorderRadius = 0,
+  quietZone = 0,
+  enableLinearGradient = false,
+  gradientDirection = ['0%', '0%', '100%', '100%'],
+  linearGradient = ['rgb(255,0,0)', 'rgb(0,255,255)'],
+  ecl = 'M',
+  getRef,
+  onError,
+  testID
 }) => {
     const result = useMemo(() => {
         try {
