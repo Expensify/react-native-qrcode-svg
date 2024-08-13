@@ -38,7 +38,7 @@ export interface QRCodeProps {
   /* error handler called when matrix fails to generate */
   onError?: Function;
   /** testID for testing */
-  testID?: string
+  testID?: string;
 }
 
 export default QRCode;
