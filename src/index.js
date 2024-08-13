@@ -82,7 +82,8 @@ const QRCode = ({
   linearGradient = ['rgb(255,0,0)', 'rgb(0,255,255)'],
   ecl = 'M',
   getRef,
-  onError
+  onError,
+  testID
 }) => {
   const result = useMemo(() => {
     try {
