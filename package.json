@@ -46,6 +46,7 @@
     "react-native-svg": ">=13.2.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.25.4",
     "prop-types": "^15.8.0",
     "qrcode": "^1.5.1"
   },
