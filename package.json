@@ -5,6 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
+    "prepare": "rm -rf example",
     "test": "jest",
     "test:update": "npm run test -- --updateSnapshot",
     "lint": "standard 'src/**/*.js'",
