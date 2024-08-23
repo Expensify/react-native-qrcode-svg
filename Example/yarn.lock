@@ -7324,10 +7324,10 @@ react-native-macos@^0.73.0-0:
   version "0.0.0"
   uid ""
 
-react-native-svg@^15.1.0:
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.6.0.tgz#13b2af53b1701597df301122b869b61918e1e9a5"
-  integrity sha512-TUtR+h+yi1ODsd8FHdom1TpjfWOmnaK5pri5rnSBXnMqpzq8o2zZfonHTjPX+nS3wb/Pu2XsoARgYaHNjVWXhQ==
+react-native-svg@15.5.0:
+  version "15.5.0"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-15.5.0.tgz#208647f2f1266a0a214f16e1b807fdc3ee7c0869"
+  integrity sha512-/DUPfmSf3eXt59WjG8hlRKVPzqVjM7duG9vJH6UYAJesj3NtYcyFsO5sYpSkovlOwagk84PibcVb92bBwMSmng==
   dependencies:
     css-select "^5.1.0"
     css-tree "^1.1.3"
