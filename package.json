@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "prepare": "rm -rf example",
+    "prepack": "rm -rf example",
     "test": "jest",
     "test:update": "npm run test -- --updateSnapshot",
     "lint": "standard 'src/**/*.js'",
@@ -47,7 +47,6 @@
     "react-native-svg": ">=13.2.0"
   },
   "dependencies": {
-    "@babel/runtime": "^7.25.4",
     "prop-types": "^15.8.0",
     "qrcode": "^1.5.1",
     "text-encoding": "^0.7.0"
