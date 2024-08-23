@@ -59,14 +59,14 @@ const renderLogo = ({
           clipPath="url(#clip-logo-background)"
         />
       </G>
-      <G x={logoMargin} y={logoMargin} clipPath='url(#clip-logo)'>
+      <G x={logoMargin} y={logoMargin} clipPath="url(#clip-logo)">
         <Rect
-            width={logoBackgroundSize - logoMargin}
-            height={logoBackgroundSize - logoMargin}
-            fill={logoBackgroundColor}
+          width={logoBackgroundSize - logoMargin}
+          height={logoBackgroundSize - logoMargin}
+          fill={logoBackgroundColor}
         />
         {logoSVG ? (
-            <LogoSVG svg={logoSVG} logoSize={logoSize} logoColor={logoColor} />
+          <LogoSVG svg={logoSVG} logoSize={logoSize} logoColor={logoColor} />
         ) : (
           <Image
             width={logoSize}
