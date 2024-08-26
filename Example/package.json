@@ -21,7 +21,7 @@
     "react-native": "^0.73.6",
     "react-native-macos": "^0.73.0-0",
     "react-native-qrcode-svg": "link:../",
-    "react-native-svg": "^15.1.0",
+    "react-native-svg": "^15.5.0",
     "react-native-web": "^0.19.10",
     "webpack": "^5.91.0"
   },
