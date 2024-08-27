@@ -37,6 +37,7 @@ jobs:
                 git config --global commit.gpgsign true
                 git config --global user.name OSBotify
                 git config --global user.email infra+osbotify@expensify.com
+
             - uses: actions/setup-node@v4
               with:
                 node-version-file: ".nvmrc"
