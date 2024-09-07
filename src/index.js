@@ -1,4 +1,4 @@
-global.TextEncoder = require("text-encoding").TextEncoder;
+global.TextEncoder = require("fast-text-encoding").TextEncoder;
 
 import React, { useMemo } from "react";
 import Svg, {
