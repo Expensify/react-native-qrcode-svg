@@ -54,9 +54,6 @@ jobs:
             - name: Push branch and publish tags
               run: git push origin main && git push --tags
 
-            - name: Build package
-              run: npm run build
-
             - name: Publish to npm
               run: npm publish
               env:
