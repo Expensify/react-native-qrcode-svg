@@ -30,6 +30,14 @@
     "type": "git",
     "url": "git+ssh://git@github.com/awesomejerry/react-native-qrcode-svg.git"
   },
+  "files": [
+    "Example",
+    "screenshot",
+    "src",
+    "babel.config.js",
+    "index.d.ts",
+    "index.js"
+  ],
   "keywords": [
     "react-native",
     "qrcode",
