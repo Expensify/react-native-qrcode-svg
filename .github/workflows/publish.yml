@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
 
-# Ensure that only once instance of this workflow executes at a time.
+# Ensure that only one instance of this workflow executes at a time.
 # If multiple PRs are merged in quick succession, there will only ever be one publish workflow running and one pending.
 concurrency: ${{ github.workflow }}
 
