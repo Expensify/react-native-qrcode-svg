@@ -122,6 +122,9 @@ const QRCode = ({
   const { path, cellSize } = result;
   const displayLogo = logo || logoSVG;
 
+  const logoPosition = (size - logoSize - logoMargin * 2) / 2;
+  const logoPositionEnd = logoPosition + logoSize + logoMargin * 2;
+
   return (
     <Svg
       testID={testID}
@@ -146,6 +149,12 @@ const QRCode = ({
           <Stop offset="0" stopColor={linearGradient[0]} stopOpacity="1" />
           <Stop offset="1" stopColor={linearGradient[1]} stopOpacity="1" />
         </LinearGradient>
+        <ClipPath id="invert-clip-logo">
+          <Path
+            d={`M0,0 L${size},0 L${size},${size} L0,${size} Z
+                 M${logoPosition},${logoPosition} L${logoPosition},${logoPositionEnd} L${logoPositionEnd},${logoPositionEnd} L${logoPositionEnd},${logoPosition} Z`}
+          />
+        </ClipPath>
       </Defs>
       <G>
         <Rect
@@ -162,6 +171,12 @@ const QRCode = ({
           strokeLinecap="butt"
           stroke={enableLinearGradient ? "url(#grad)" : color}
           strokeWidth={cellSize}
+          clipPath={
+            displayLogo &&
+            logoBackgroundColor === "transparent" &&
+            backgroundColor === "transparent" &&
+            "url(#invert-clip-logo)"
+          }
         />
       </G>
       {displayLogo &&
