@@ -1,5 +1,5 @@
 import React from "react";
-import { LocalSvg } from "react-native-svg/css";
+import { LocalSvg } from "react-native-svg";
 import { SvgUri, SvgXml } from "react-native-svg";
 import { isString, isUrlString } from "../utils";
 
