@@ -6,7 +6,7 @@ declare class QRCode extends React.PureComponent<QRCodeProps, any> {}
 
 export interface QRCodeProps {
   /* what the qr code stands for */
-  value?: string;
+  value?: string | Array<{data: string; mode: 'alphanumeric' | 'numeric' | 'byte' | 'kanji' | 'mixed';}>;
   /* the whole component size */
   size?: number;
   /* the color of the cell */
