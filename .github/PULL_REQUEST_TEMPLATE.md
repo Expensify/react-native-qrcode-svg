@@ -10,10 +10,10 @@
 ## Checklist
 - [ ] I have described the bug/issue
 - [ ] I have provided reproduction in `Example` App
-- [ ] I have that solution works on `Example` App on all platforms:
+- [ ] I have tested that solution works on `Example` App on all platforms:
   - Android
-  - Ios
-  - web
+  - iOS
+  - Web
 
 ### Screenshots/Videos
 <!-- Any extra screens related to your solution -->
