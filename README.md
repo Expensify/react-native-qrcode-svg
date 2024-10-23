@@ -1,8 +1,5 @@
-# Looking for maintainers
-I'm not working on any React Native projects anymore. Feel free to take over this project if you feel good about it!
 
 [![NPM](https://nodei.co/npm/react-native-qrcode-svg.png)](https://npmjs.org/package/react-native-qrcode-svg)
-![circleci](https://circleci.com/gh/awesomejerry/react-native-qrcode-svg.svg?style=shield&circle-token=185bdd4fed561139178638f5b9f9c48ddefc9288)
 
 # react-native-qrcode-svg
 
@@ -153,7 +150,11 @@ import RNFS from "react-native-fs"
    	})
   }
 ```
+## Development and testing
+This library comes with an Example App. You can find it in the directory `./Example`.  
+Use the app to easily test your changes to `react-native-qrcode-svg` and when developing new features.
 
+Read more details in the dedicated [README](/Example/README.md).
 
 ## Dependencies
 
