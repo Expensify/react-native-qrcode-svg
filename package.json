@@ -57,7 +57,8 @@
   "dependencies": {
     "prop-types": "^15.8.0",
     "qrcode": "^1.5.1",
-    "text-encoding": "^0.7.0"
+    "fast-text-encoding": "^1.0.6"
+
   },
   "devDependencies": {
     "@types/react": "^18.2.75",
