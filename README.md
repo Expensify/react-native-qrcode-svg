@@ -22,10 +22,14 @@ Install dependency packages
 
 ```bash
 yarn add react-native-svg react-native-qrcode-svg
+# For React Native < 0.75 please install `text-encoding` package too!
+yarn add text-encoding
 ```
 Or
 ```bash
 npm i -S react-native-svg react-native-qrcode-svg
+# For React Native < 0.75 please install `text-encoding` package too!
+npm i -S text-encoding
 ```
 
 If you are using `React Native 0.60.+` go to the folder **your-project/ios** and run `pod install`, and you're done. 

@@ -1,5 +1,5 @@
 import { Platform } from "react-native";
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import Svg, {
   Defs,
   G,
@@ -13,12 +13,6 @@ import Svg, {
 import genMatrix from "./genMatrix";
 import transformMatrixIntoPath from "./transformMatrixIntoPath";
 import LogoSVG from "./LogoSVG";
-
-const { major, minor } = Platform.constants.reactNativeVersion;
-if (0 === major && 75 > minor) {
-  // only load the polyfill for versions < 0.75
-  global.TextEncoder = require("text-encoding").TextEncoder;
-}
 
 const renderLogo = ({
   size,
@@ -107,6 +101,8 @@ const QRCode = ({
   onError,
   testID,
 }) => {
+  useEffect(loadTextEncodingPolyfill, []);
+
   const result = useMemo(() => {
     try {
       return transformMatrixIntoPath(genMatrix(value, ecl), size);
@@ -184,5 +180,21 @@ const QRCode = ({
     </Svg>
   );
 };
+
+function loadTextEncodingPolyfill() {
+  const { major, minor } = Platform.constants.reactNativeVersion;
+  if (!global.TextEncoder && major === 0 && minor < 75) {
+    try {
+      require.resolve("text-encoding");
+      import("text-encoding").then((m) => {
+        global.TextEncoder = m.TextEncoder;
+      });
+    } catch (error) {
+      console.error(
+        "If you are using RN < 0.75 please install the `text-encoding` library in your project"
+      );
+    }
+  }
+}
 
 export default QRCode;
