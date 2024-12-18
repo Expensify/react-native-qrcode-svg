@@ -182,8 +182,9 @@ const QRCode = ({
 };
 
 function loadTextEncodingPolyfill() {
-  const { major, minor } = Platform.constants.reactNativeVersion;
-  if (!global.TextEncoder && major === 0 && minor < 75) {
+  // Platform.constants isn't available on the web.
+  const version = Platform.constants?.reactNativeVersion;
+  if (!global.TextEncoder && version?.major === 0 && version?.minor < 75) {
     try {
       require.resolve("text-encoding");
       import("text-encoding").then((m) => {
