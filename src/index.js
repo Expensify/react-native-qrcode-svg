@@ -1,6 +1,5 @@
-global.TextEncoder = require("text-encoding").TextEncoder;
-
-import React, { useMemo } from "react";
+import { Platform } from "react-native";
+import React, { useMemo, useEffect } from "react";
 import Svg, {
   Defs,
   G,
@@ -102,6 +101,8 @@ const QRCode = ({
   onError,
   testID,
 }) => {
+  useEffect(loadTextEncodingPolyfill, []);
+
   const result = useMemo(() => {
     try {
       return transformMatrixIntoPath(genMatrix(value, ecl), size);
@@ -179,5 +180,22 @@ const QRCode = ({
     </Svg>
   );
 };
+
+function loadTextEncodingPolyfill() {
+  // Platform.constants isn't available on the web.
+  const version = Platform.constants?.reactNativeVersion;
+  if (!global.TextEncoder && version?.major === 0 && version?.minor < 75) {
+    try {
+      require.resolve("text-encoding");
+      import("text-encoding").then((m) => {
+        global.TextEncoder = m.TextEncoder;
+      });
+    } catch (error) {
+      console.error(
+        "If you are using RN < 0.75 please install the `text-encoding` library in your project"
+      );
+    }
+  }
+}
 
 export default QRCode;

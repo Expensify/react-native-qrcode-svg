@@ -18,7 +18,7 @@
     "@svgr/webpack": "^8.1.0",
     "file-loader": "^6.2.0",
     "react": "18.2.0",
-    "react-native": "^0.73.6",
+    "react-native": "^0.75.0",
     "react-native-macos": "^0.73.0-0",
     "react-native-qrcode-svg": "link:../",
     "react-native-svg": "^15.5.0",
