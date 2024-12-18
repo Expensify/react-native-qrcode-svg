@@ -1,5 +1,4 @@
-global.TextEncoder = require("text-encoding").TextEncoder;
-
+import { Platform } from "react-native";
 import React, { useMemo } from "react";
 import Svg, {
   Defs,
@@ -14,6 +13,12 @@ import Svg, {
 import genMatrix from "./genMatrix";
 import transformMatrixIntoPath from "./transformMatrixIntoPath";
 import LogoSVG from "./LogoSVG";
+
+const { major, minor } = Platform.constants.reactNativeVersion;
+if (0 === major && 75 > minor) {
+  // only load the polyfill for versions < 0.75
+  global.TextEncoder = require("text-encoding").TextEncoder;
+}
 
 const renderLogo = ({
   size,
