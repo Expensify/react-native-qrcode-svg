@@ -1,4 +1,5 @@
 const { readFileSync } = require('fs');
+const semver = require('semver');
 
 const fileToTransform = 'node_modules/react-native-qrcode-svg/src/index.js';
 
@@ -20,11 +21,10 @@ function createTransformer(transformer) {
         const packageJsonPath = require.resolve('react-native/package.json');
         const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
         const ReactNativeVersion = packageJson.version;
-        const [major, minor] = ReactNativeVersion.split('.');
 
         // React Native versions below 0.75 do not include a global TextEncoder implementation.
         // To ensure compatibility with these older versions, we add a polyfill using the 'text-encoding' library.
-        if (major === '0' && minor < '75') {
+        if (semver.lt(ReactNativeVersion, '0.75.0')) {
             return transformer.transform({
                 src: `global.TextEncoder = require('text-encoding').TextEncoder;\n${src}`, 
                 filename, 

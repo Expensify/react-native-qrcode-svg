@@ -36,7 +36,8 @@
     "src",
     "babel.config.js",
     "index.d.ts",
-    "index.js"
+    "index.js",
+    "textEncodingTransformation.js"
   ],
   "keywords": [
     "react-native",

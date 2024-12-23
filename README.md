@@ -174,6 +174,7 @@ Here's how to configure the transformer for both Expo and React Native projects:
 #### Setting Up the Transformer:
 Make sure your project has a `metro.config.js` file. If not, create one at the root of your project.
 
+#### Expo Projects:
 ```js
 const { getDefaultConfig } = require("expo/metro-config");
 
@@ -190,14 +191,13 @@ module.exports = (() => {
   return config;
 })();
 ```
-Merge the contents from your project's metro.config.js file with this config (create the file if it does not exist already).
+Merge the contents from your project's metro.config.js file with this config.
 
+#### React Native Projects:
 ```js
 const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
 
 const defaultConfig = getDefaultConfig(__dirname);
-
-const { assetExts, sourceExts } = defaultConfig.resolver;
 
 const config = {
   transformer: {
