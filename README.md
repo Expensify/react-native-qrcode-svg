@@ -165,3 +165,46 @@ Read more details in the dedicated [README](/Example/README.md).
 ### Dependencies
 
 * [node-qrcode](https://github.com/soldair/node-qrcode)
+
+### Integrating react-native-qrcode-svg with React Native versions below 0.75
+This library works seamlessly with React Native versions 0.75 and above. However, if you're using an older version of React Native (below 0.75), you might need to apply a custom transformation to your project's metro.config.js file to ensure compatibility with the TextEncoder API.
+
+Here's how to configure the transformer for both Expo and React Native projects:
+
+#### Setting Up the Transformer:
+Make sure your project has a `metro.config.js` file. If not, create one at the root of your project.
+
+#### Expo Projects:
+```js
+const { getDefaultConfig } = require("expo/metro-config");
+
+module.exports = (() => {
+  const config = getDefaultConfig(__dirname);
+
+  const { transformer } = config;
+
+  config.transformer = {
+    ...transformer,
+    babelTransformerPath: require.resolve("react-native-qrcode-svg/textEncodingTransformation")
+  };
+
+  return config;
+})();
+```
+Merge the contents from your project's metro.config.js file with this config.
+
+#### React Native Projects:
+```js
+const { getDefaultConfig, mergeConfig } = require("@react-native/metro-config");
+
+const defaultConfig = getDefaultConfig(__dirname);
+
+const config = {
+  transformer: {
+    babelTransformerPath: require.resolve("react-native-qrcode-svg/textEncodingTransformation"),
+  },
+};
+
+module.exports = mergeConfig(defaultConfig, config);
+```
+
