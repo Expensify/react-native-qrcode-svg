@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "prop-types": "^15.8.0",
-    "qrcode": "^1.5.1",
+    "qrcode": "^1.5.4",
     "text-encoding": "^0.7.0"
   },
   "devDependencies": {
