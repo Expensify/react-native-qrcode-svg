@@ -2,10 +2,10 @@
 
 ## Step 1: Install dependencies
 
-Install dependencies in both root and Example directories 
+Install dependencies in both root and Example directories. 
 
 ```bash
-cd .. && yarn install && cd Example
+npm install && cd Example
 yarn install
 ```
 
