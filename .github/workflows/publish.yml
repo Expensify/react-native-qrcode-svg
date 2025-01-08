@@ -33,4 +33,4 @@ jobs:
     with:
       repository: ${{ github.repository }}
       # 'outputs' provides a string, and we need a number, so we use fromJSON to convert it
-      pull_request_number: ${{ fromJSON(needs.get_pull_request.outputs.pull_request_number) }}
+      pull_request_number: ${{ fromJSON(needs.get_pull_request.outputs.number) }}
