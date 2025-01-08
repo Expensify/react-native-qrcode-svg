@@ -9,28 +9,8 @@ on:
 concurrency: ${{ github.workflow }}
 
 jobs:
-  get_pull_request:
+  publish:
     # os-botify[bot] will update the version on `main`, so this check is important to prevent an infinite loop
     if: ${{ github.actor != 'os-botify[bot]' }}
-    runs-on: ubuntu-latest
-    outputs:
-      pull_request_number: ${{ steps.getMergedPullRequest.outputs.number }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - name: Get merged pull request
-        id: getMergedPullRequest
-        uses: actions-ecosystem/action-get-merged-pull-request@59afe90821bb0b555082ce8ff1e36b03f91553d9
-        with:
-          github_token: ${{ github.token }}
-
-  publish:
-    needs: get_pull_request
     uses: Expensify/GitHub-Actions/.github/workflows/npmPublish.yml@main
     secrets: inherit
-    with:
-      repository: ${{ github.repository }}
-      # 'outputs' provides a string, and we need a number, so we use fromJSON to convert it
-      pull_request_number: ${{ fromJSON(needs.get_pull_request.outputs.pull_request_number) }}
