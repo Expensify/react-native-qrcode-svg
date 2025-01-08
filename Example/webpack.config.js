@@ -17,6 +17,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(js?)$/,
+        use: {loader: 'babel-loader'},
+      },
+      {
         test: /\.(jsx?|tsx?)$/,
         use: {loader: 'babel-loader'},
         include: [
