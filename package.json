@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/awesomejerry/react-native-qrcode-svg.git"
+    "url": "git+https://github.com/Expensify/react-native-qrcode-svg.git"
   },
   "files": [
     "Example",
