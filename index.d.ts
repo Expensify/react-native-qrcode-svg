@@ -2,7 +2,7 @@ import * as React from "react";
 import type {ImageSourcePropType} from "react-native";
 import type {SvgProps} from "react-native-svg";
 
-declare class QRCode extends React.PureComponent<QRCodeProps, any> {}
+declare const QRCode: React.FC<QRCodeProps>;
 
 export interface QRCodeProps {
   /* what the qr code stands for */
