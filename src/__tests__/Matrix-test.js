@@ -19,3 +19,8 @@ it('generates with ecl:Q correctly', () => {
   const matrix = genMatrix('test', 'Q')
   expect(matrix).toMatchSnapshot()
 })
+
+it('generates with version and additionalProps correctly', () => {
+  const matrix = genMatrix('test', 'M', 5, { maskPattern: 2 })
+  expect(matrix).toMatchSnapshot()
+})

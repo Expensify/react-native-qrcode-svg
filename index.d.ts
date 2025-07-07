@@ -1,8 +1,8 @@
 import * as React from "react";
-import type {ImageSourcePropType} from "react-native";
-import type {SvgProps} from "react-native-svg";
+import type { ImageSourcePropType } from "react-native";
+import type { SvgProps } from "react-native-svg";
 
-declare class QRCode extends React.PureComponent<QRCodeProps, any> {}
+declare class QRCode extends React.PureComponent<QRCodeProps, any> { }
 
 export interface QRCodeProps {
   /* what the qr code stands for */
@@ -45,6 +45,10 @@ export interface QRCodeProps {
   ecl?: "L" | "M" | "Q" | "H";
   /* error handler called when matrix fails to generate */
   onError?: Function;
+  /* QR Code version (1-40). Higher version = bigger QR code, more data. It automatically adjusts for best version size based on data entered.  */
+  version?: number;
+  /* Additional properties to pass directly to the underlying qrcode library. */
+  additionalProps?: Record<string, any>;
   /** testID for testing */
   testID?: string;
 }
