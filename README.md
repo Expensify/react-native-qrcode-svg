@@ -1,4 +1,3 @@
-
 [![NPM](https://nodei.co/npm/react-native-qrcode-svg.png)](https://npmjs.org/package/react-native-qrcode-svg)
 
 # react-native-qrcode-svg
@@ -123,7 +122,8 @@ quietZone | 0 | quiet zone around the qr in pixels (useful when saving image to 
 getRef          | null       | Get SVG ref for further usage
 ecl             | 'M'        | Error correction level
 onError(error)  | undefined  | Callback fired when exception happened during the code generating process
-
+version         | undefined  | QR Code version (1-40). Higher version = bigger QR code, more data.
+additionalProps | undefined  | Additional properties to pass directly to the underlying qrcode library.
 
 ## Saving generated code to gallery
  _Note: Experimental only ( not tested on iOS) , uses getRef() and needs [RNFS module](https://github.com/itinance/react-native-fs)_

@@ -27,6 +27,16 @@ const colorfulQRCODe = (
   </Description>
 );
 
+const versionedQRCode = (
+  <Description text="QR code with version and additional props">
+    <QRCode
+      value="Versioned QR code"
+      size={qrCodeSize}
+      version={25}
+    />
+  </Description>
+);
+
 const urlPngQRCode = (
   <Description text="QR code with PNG from url avatar">
     <QRCode
@@ -117,6 +127,7 @@ const App = () => {
         <Text style={styles.title}>Example usages of QRCode component</Text>
         {defaultQRCode}
         {colorfulQRCODe}
+        {versionedQRCode}
         {urlPngQRCode}
         {localPngQRCode}
         {localPngBackgroundColorQRCode}
