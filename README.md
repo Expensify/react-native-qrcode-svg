@@ -160,7 +160,7 @@ Read more details in the dedicated [README](/Example/README.md).
 
 ### PeerDependencies
 
-* [react-native-svg](https://github.com/magicismight/react-native-svg)
+* [react-native-svg](https://github.com/software-mansion/react-native-svg)
 
 ### Dependencies
 
