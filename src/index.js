@@ -102,12 +102,17 @@ const QRCode = ({
   getRef,
   onError,
   testID,
+  // version = '' any number from 1 to 40, if left empty, auto selected based on data length
+  additionalProps,
 }) => {
   const clipPathId = useId();
 
   const result = useMemo(() => {
     try {
-      return transformMatrixIntoPath(genMatrix(value, ecl), size);
+      return transformMatrixIntoPath(
+        genMatrix(value, ecl, version, additionalProps),
+        size
+      );
     } catch (error) {
       if (onError && typeof onError === "function") {
         onError(error);
@@ -116,7 +121,7 @@ const QRCode = ({
         throw error;
       }
     }
-  }, [value, size, ecl]);
+  }, [value, size, ecl, version, additionalProps]);
 
   if (!result) {
     return null;
