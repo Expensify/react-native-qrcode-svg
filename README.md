@@ -3,6 +3,8 @@
 
 # react-native-qrcode-svg
 
+I am testing CLA
+
 A QR Code generator for React Native based on react-native-svg and javascript-qrcode.
 
 Discussion: https://discord.gg/RvFM97v
