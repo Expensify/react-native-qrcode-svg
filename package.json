@@ -55,6 +55,18 @@
     "react-native": ">=0.63.4",
     "react-native-svg": ">=14.0.0"
   },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=24.19.0",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11.10.0",
+      "onFail": "error"
+    }
+  },
   "dependencies": {
     "prop-types": "^15.8.0",
     "qrcode": "^1.5.4",
