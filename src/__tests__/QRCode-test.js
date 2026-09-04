@@ -48,9 +48,9 @@ describe('QRCode', () => {
   it('renders with segmented value', () => {
     const onErrorMock = jest.fn()
     const segs = [
-      { data: "ABCDEFG", mode: "alphanumeric" },
-      { data: "0123456", mode: "numeric" },
-    ];
+      { data: 'ABCDEFG', mode: 'alphanumeric' },
+      { data: '0123456', mode: 'numeric' }
+    ]
     const tree = renderer.create(
       <QRCode
         value={segs}
