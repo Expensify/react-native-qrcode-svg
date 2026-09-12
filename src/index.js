@@ -89,6 +89,7 @@ const QRCode = ({
   size = 100,
   color = 'black',
   backgroundColor = 'white',
+  borderRadius = 0,
   logo,
   logoSVG,
   logoSize = size * 0.2,
@@ -159,6 +160,7 @@ const QRCode = ({
           width={size + quietZone * 2}
           height={size + quietZone * 2}
           fill={backgroundColor}
+          rx={borderRadius}
         />
       </G>
       <G>
