@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, Text} from 'react-native';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import SVG from './assets/ruby.svg';
 import Description from './components/Description';
 import QRCode from 'react-native-qrcode-svg';
@@ -47,6 +47,21 @@ const localPngQRCode = (
       logo={require('./assets/google.png')}
       logoSize={logoSize}
     />
+  </Description>
+);
+
+const localTransparentPngQRCode = (
+  <Description text="QR code with local transparent PNG">
+    <View style={{backgroundColor: 'blue'}}>
+      <QRCode
+        value={googleUrl}
+        size={qrCodeSize}
+        logo={require('./assets/google.png')}
+        logoSize={logoSize}
+        logoBackgroundColor="transparent"
+        backgroundColor="transparent"
+      />
+    </View>
   </Description>
 );
 
@@ -119,6 +134,7 @@ const App = () => {
         {colorfulQRCODe}
         {urlPngQRCode}
         {localPngQRCode}
+        {localTransparentPngQRCode}
         {localPngBackgroundColorQRCode}
         {urlSvgQRCode}
         {stringSvgQRCode}
