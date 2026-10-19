@@ -37,6 +37,7 @@
     "babel.config.js",
     "index.d.ts",
     "index.js",
+    "textEncoderPolyfill.js",
     "textEncodingTransformation.js"
   ],
   "keywords": [
@@ -69,8 +70,7 @@
   },
   "dependencies": {
     "prop-types": "^15.8.0",
-    "qrcode": "^1.5.4",
-    "text-encoding": "^0.7.0"
+    "qrcode": "^1.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.75",
