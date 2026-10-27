@@ -11,7 +11,8 @@
     "prettier": "prettier --write ./src/**/*.{tsx,ts}",
     "start": "react-native start",
     "test": "jest",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "postinstall": "node scripts/patchMetroImageSize.js"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
@@ -49,6 +50,9 @@
   },
   "resolutions": {
     "selfsigned": "^5.5.0"
+  },
+  "resolutions": {
+    "image-size": "2.0.4"
   },
   "engines": {
     "node": ">=18"
