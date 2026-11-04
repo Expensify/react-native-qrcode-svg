@@ -85,6 +85,7 @@
     "standard": "^16.0.4"
   },
   "overrides": {
+    "fast-xml-parser": "^5.7.0",
     "image-size": "2.0.4",
     "selfsigned": "^5.5.0"
   }

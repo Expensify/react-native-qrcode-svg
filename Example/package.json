@@ -49,10 +49,9 @@
     "webpack-dev-server": "^5.2.7"
   },
   "resolutions": {
+    "fast-xml-parser": "^5.7.0",
+    "image-size": "2.0.4",
     "selfsigned": "^5.5.0"
-  },
-  "resolutions": {
-    "image-size": "2.0.4"
   },
   "engines": {
     "node": ">=18"
