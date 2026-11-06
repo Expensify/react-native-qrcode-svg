@@ -113,7 +113,7 @@ color           | 'black'        | Color of the QR code
 backgroundColor | 'white'        | Color of the background
 enableLinearGradient | false     | enables or disables linear gradient
 linearGradient  |  ['rgb(255,0,0)','rgb(0,255,255)']  | array of 2 rgb colors used to create the linear gradient
-gradientDirection| [170,0,0,0]  | the direction of the linear gradient
+gradientDirection| ["0%", "0%", "100%", "100%"]  | the direction of the linear gradient, as percentages representing the gradient's [x1, x2, y1, y2] positions. e.g. left to right would be ["0%", "0%", "100%", "0%"]
 logo | null        | Image source object. Ex. {uri: 'base64string'} or {require('pathToImage')}
 logoSize | 20% of size | Size of the imprinted logo. Bigger logo = less error correction in QR code
 logoBackgroundColor | backgroundColor        | The logo gets a filled quadratic background with this color. Use 'transparent' if your logo already has its own backdrop.
